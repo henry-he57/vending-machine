@@ -21,7 +21,7 @@ public class Display {
     }
     
     public void displaySnack(Snack item){
-        item.
+        System.out.println(item.name + "  " + item.price + "  " + item.qty);
     }
     
     public void displaySnacks(){
