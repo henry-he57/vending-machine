@@ -14,16 +14,29 @@ public class VendingMachine {
     private int bank;
     private double moneyIn;
     private int[] snackQty = new int[10];
+    private Snack[] name = new Snack[10];
+
+            
+            
+            
+    Snack[0] = new Snack[0]("Lays", 2.00, 5);
+    Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
+    Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
+    Snack marsBar = new Snack("Mars Bar", 1.50, 5);
+    Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
+    Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
+    Snack mentos = new Snack("Mentos", 2.00, 5);
+    Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
+    Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
+    Snack nerds = new Snack("Nerds", 3.00, 5);
 
     public VendingMachine(double m) {
         moneyIn = m;
     }
-    
-    public void insertMoney(){
-        
+
+    public void insertMoney() {
+
     }
-    
-    
 
     /**
      *
@@ -33,17 +46,6 @@ public class VendingMachine {
         Display disp = new Display();
         disp.displayBalance();
 
-        Snack lays = new Snack("Lays", 2.00, 5);
-        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
-        Snack ruffles = new Snack("Ruffles All Dressed" , 2.00, 5);
-        Snack marsBar = new Snack("Mars Bar", 1.50, 5);
-        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
-        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
-        Snack mentos = new Snack("Mentos", 2.00, 5);
-        Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
-        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
-        Snack nerds = new Snack("Nerds", 3.00, 5);   
-        
     }
 
     /**
