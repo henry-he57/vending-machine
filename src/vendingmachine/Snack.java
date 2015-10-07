@@ -10,5 +10,22 @@ package vendingmachine;
  * @author Adam
  */
 public class Snack {
-     String snackName = "";
+     String name;
+     Double price;
+     int qty;
+     
+     public Snack (String newName, double newPrice, int startQty){
+         name = newName;
+         price = newPrice;
+         qty = startQty;
+     }
+     
+     public int snackRestock(int a){
+         qty =+ a;
+         return qty;
+     }
+     
+     
+     
+     
 }
