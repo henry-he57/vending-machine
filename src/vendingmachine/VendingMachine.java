@@ -16,20 +16,6 @@ public class VendingMachine {
     private int[] snackQty = new int[10];
     private Snack[] name = new Snack[10];
 
-            
-            
-            
-    Snack[0] = new Snack[0]("Lays", 2.00, 5);
-    Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
-    Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
-    Snack marsBar = new Snack("Mars Bar", 1.50, 5);
-    Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
-    Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
-    Snack mentos = new Snack("Mentos", 2.00, 5);
-    Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
-    Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
-    Snack nerds = new Snack("Nerds", 3.00, 5);
-
     public VendingMachine(double m) {
         moneyIn = m;
     }
@@ -38,14 +24,48 @@ public class VendingMachine {
 
     }
 
+    public void addNewSnack(int i, Snack s){
+        name[i] = s;
+    }
+    
+    /**
+     * declares all the snacks and sets them all to a spot in the 'name' array
+     * @param vm    the vending machine that the snacks are all in
+     */
+    public static void loadStartingSnacks(VendingMachine vm){
+        Snack lays = new Snack("Lays", 2.00, 5);
+        vm.addNewSnack(0, lays);
+        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
+        vm.addNewSnack(1, doritos);
+        Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
+        vm.addNewSnack(2, ruffles);
+        Snack marsBar = new Snack("Mars Bar", 1.50, 5);
+        vm.addNewSnack(3, marsBar);
+        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
+        vm.addNewSnack(4, coffeeCrisp);
+        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
+        vm.addNewSnack(5, hersheys);
+        Snack mentos = new Snack("Mentos", 2.00, 5);
+        vm.addNewSnack(6, mentos);
+        Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
+        vm.addNewSnack(7, twizzlers);
+        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
+        vm.addNewSnack(8, fuzzyPeaches);
+        Snack nerds = new Snack("Nerds", 3.00, 5);
+        vm.addNewSnack(9, nerds);
+    }
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
+        VendingMachine m = new VendingMachine(0);
+        
         Display disp = new Display();
         disp.displayBalance();
-
+       
+        loadStartingSnacks(m);
+        
     }
 
     /**
