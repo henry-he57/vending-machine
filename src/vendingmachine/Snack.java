@@ -20,6 +20,11 @@ public class Snack {
          qty = startQty;
      }
      
+     /**
+      * increases the quantity of snack by the amount specified
+      * @param a    the amount the qty is increased by
+      * @return qty     the increased amount being sent back
+      */
      public int snackRestock(int a){
          qty =+ a;
          return qty;
