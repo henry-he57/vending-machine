@@ -67,7 +67,6 @@ public class VendingMachine {
      */
     public static void main(String[] args) {
         VendingMachine vm = new VendingMachine(20.00);
-       // Display disp = new Display();
         
         loadStartingSnacks(vm);
         vm.displaySnacks();
