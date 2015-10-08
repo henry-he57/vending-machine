@@ -21,7 +21,7 @@ public class VendingMachine {
     }
 
     public void insertMoney() {
-
+    moneyIn = disp.promptInsert();
     }
 
     public void addNewSnack(int i, Snack s){
@@ -29,7 +29,6 @@ public class VendingMachine {
     }
     
     public void displaySnacks(){
-        
         for (int count = 0; count <10; count++){
             disp.displaySnack(name[count]);
         }
@@ -61,6 +60,7 @@ public class VendingMachine {
         Snack nerds = new Snack("Nerds", 3.00, 5);
         m.addNewSnack(9, nerds);
     }
+    
     /**
      *
      * @param args
@@ -70,6 +70,7 @@ public class VendingMachine {
         
         loadStartingSnacks(vm);
         vm.displaySnacks();
+        vm.insertMoney();
     }
 
     /**
