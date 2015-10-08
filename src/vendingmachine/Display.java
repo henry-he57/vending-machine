@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package vendingmachine;
-
+import java.util.*;
 import java.io.Console;
 import java.text.DecimalFormat;
 
@@ -13,9 +13,14 @@ import java.text.DecimalFormat;
  * @author 341167922
  */
 public class Display {
-    
+    Scanner kbScan = new Scanner(System.in);
     public void displaySnack(Snack a){
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
     
+    public double promptInsert(){
+        System.out.println("Please insert amount of money: ");
+        double amount = kbScan.nextDouble();
+        return amount;
+    }
 }
