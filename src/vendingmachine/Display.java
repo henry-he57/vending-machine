@@ -18,4 +18,5 @@ public class Display {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
     
+    
 }
