@@ -16,10 +16,6 @@ public class VendingMachine {
     private Snack[] name = new Snack[10];
     Display disp = new Display();
 
-    public VendingMachine(double m) {
-        moneyIn = m;
-    }
-
     public void insertMoney() {
     moneyIn = disp.promptInsert();
     }
@@ -66,11 +62,12 @@ public class VendingMachine {
      * @param args
      */
     public static void main(String[] args) {
-        VendingMachine vm = new VendingMachine(20.00);
+        VendingMachine vm = new VendingMachine();
         
         loadStartingSnacks(vm);
         vm.displaySnacks();
         vm.insertMoney();
+        System.out.println(vm.getMoneyIn());
     }
 
     /**
@@ -97,7 +94,7 @@ public class VendingMachine {
     /**
      * @param moneyIn the moneyIn to set
      */
-    public void setMoneyIn(int currentMoneyIn) {
-        moneyIn = currentMoneyIn;
+    public void setMoneyIn(int newMoneyIn) {
+        moneyIn = newMoneyIn;
     }
 }
