@@ -13,25 +13,9 @@ import java.text.DecimalFormat;
  * @author 341167922
  */
 public class Display {
-    DecimalFormat f = new DecimalFormat("0.##");
-    VendingMachine machine = new VendingMachine(20);
     
-    public Display(){
-        
+    public void displaySnack(Snack a){
+        System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
-    
-    public void displaySnack(Snack item){
-        System.out.println(item.name + "  " + item.price + "  " + item.qty);
-    }
-    
-    public void displaySnacks(){
-        System.out.println();
-    }
-    
-    public void displayBalance(){
-        System.out.println(machine.getMoneyIn());
-    }
-    
-    
     
 }

@@ -10,27 +10,66 @@ package vendingmachine;
  * @author Adam
  */
 public class Snack {
-     String name;
-     Double price;
-     int qty;
-     
-     public Snack (String newName, double newPrice, int startQty){
-         name = newName;
-         price = newPrice;
-         qty = startQty;
-     }
-     
-     /**
-      * increases the quantity of snack by the amount specified
-      * @param a    the amount the qty is increased by
-      * @return qty     the increased amount being sent back
-      */
-     public int snackRestock(int a){
-         qty =+ a;
-         return qty;
-     }
-     
-     
-     
-     
+
+    private String name;
+    private Double price;
+    private int qty;
+
+    public Snack(String newName, double newPrice, int startQty) {
+        name = newName;
+        price = newPrice;
+        qty = startQty;
+    }
+
+    /**
+     * increases the quantity of snack by the amount specified
+     *
+     * @param a the quantity added
+     */
+    public void snackRestock(int a) {
+        setQty(+a);
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the price
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    /**
+     * @return the qty
+     */
+    public int getQty() {
+        return qty;
+    }
+
+    /**
+     * @param qty the qty to set
+     */
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
 }

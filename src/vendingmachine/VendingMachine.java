@@ -13,8 +13,8 @@ public class VendingMachine {
 
     private int bank;
     private double moneyIn;
-    private int[] snackQty = new int[10];
     private Snack[] name = new Snack[10];
+    Display disp = new Display();
 
     public VendingMachine(double m) {
         moneyIn = m;
@@ -28,44 +28,49 @@ public class VendingMachine {
         name[i] = s;
     }
     
+    public void displaySnacks(){
+        
+        for (int count = 0; count <10; count++){
+            disp.displaySnack(name[count]);
+        }
+    }
+    
     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
      * @param vm    the vending machine that the snacks are all in
      */
-    public static void loadStartingSnacks(VendingMachine vm){
+    public static void loadStartingSnacks(VendingMachine m){
         Snack lays = new Snack("Lays", 2.00, 5);
-        vm.addNewSnack(0, lays);
+        m.addNewSnack(0, lays);
         Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
-        vm.addNewSnack(1, doritos);
+        m.addNewSnack(1, doritos);
         Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
-        vm.addNewSnack(2, ruffles);
+        m.addNewSnack(2, ruffles);
         Snack marsBar = new Snack("Mars Bar", 1.50, 5);
-        vm.addNewSnack(3, marsBar);
+        m.addNewSnack(3, marsBar);
         Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
-        vm.addNewSnack(4, coffeeCrisp);
+        m.addNewSnack(4, coffeeCrisp);
         Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
-        vm.addNewSnack(5, hersheys);
+        m.addNewSnack(5, hersheys);
         Snack mentos = new Snack("Mentos", 2.00, 5);
-        vm.addNewSnack(6, mentos);
+        m.addNewSnack(6, mentos);
         Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
-        vm.addNewSnack(7, twizzlers);
+        m.addNewSnack(7, twizzlers);
         Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
-        vm.addNewSnack(8, fuzzyPeaches);
+        m.addNewSnack(8, fuzzyPeaches);
         Snack nerds = new Snack("Nerds", 3.00, 5);
-        vm.addNewSnack(9, nerds);
+        m.addNewSnack(9, nerds);
     }
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
-        VendingMachine m = new VendingMachine(0);
+        VendingMachine vm = new VendingMachine(20.00);
+       // Display disp = new Display();
         
-        Display disp = new Display();
-        disp.displayBalance();
-       
-        loadStartingSnacks(m);
-        
+        loadStartingSnacks(vm);
+        vm.displaySnacks();
     }
 
     /**
@@ -94,19 +99,5 @@ public class VendingMachine {
      */
     public void setMoneyIn(int currentMoneyIn) {
         moneyIn = currentMoneyIn;
-    }
-
-    /**
-     * @return the snackQty
-     */
-    public int[] getSnackQty() {
-        return snackQty;
-    }
-
-    /**
-     * @param snackQty the snackQty to set
-     */
-    public void setSnackQty(int[] newSnackQty) {
-        snackQty = newSnackQty;
     }
 }
