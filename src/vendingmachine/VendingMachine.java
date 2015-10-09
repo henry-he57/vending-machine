@@ -32,7 +32,8 @@ public class VendingMachine {
     }
     
     public void getSelection(){
-        disp.promptSelection(snackInfo);
+        int snackSelection = disp.promptSelection(snackInfo);
+        snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
     }
     
     /**
