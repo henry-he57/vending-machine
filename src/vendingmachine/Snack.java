@@ -76,7 +76,7 @@ public class Snack {
      * 
      * @param name Snack that has its qty being decreased by 1
      */
-    public void snackPerchased(Snack name){
+    public void snackPurchased(Snack name){
         name.qty --;
     }
 }

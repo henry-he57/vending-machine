@@ -13,7 +13,7 @@ public class VendingMachine {
 
     private int bank;
     private double moneyIn;
-    private Snack[] name = new Snack[10];
+    private Snack[] snackInfo = new Snack[10];
     Display disp = new Display();
 
     public void insertMoney() {
@@ -21,13 +21,18 @@ public class VendingMachine {
     }
 
     public void addNewSnack(int i, Snack s){
-        name[i] = s;
+        snackInfo[i] = s;
     }
     
     public void displaySnacks(){
         for (int count = 0; count <10; count++){
-            disp.displaySnack(name[count]);
+            System.out.print(count + ". ");
+            disp.displaySnack(snackInfo[count]);
         }
+    }
+    
+    public void getSelection(){
+        disp.promptSelection(snackInfo);
     }
     
     /**
@@ -67,9 +72,16 @@ public class VendingMachine {
         loadStartingSnacks(vm);
         vm.displaySnacks();
         vm.insertMoney();
-
+        vm.getSelection();
     }
 
+    
+    
+    
+    
+    
+    
+    
     /**
      * @return the bank
      */

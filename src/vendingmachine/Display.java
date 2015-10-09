@@ -24,4 +24,21 @@ public class Display {
         System.out.println("Your balance: $" + amount);
         return amount;
     }
+    
+    
+    public int promptSelection(Snack[] s){
+        
+        char confirmation = 'n';
+        int snackNumber = 0;
+        
+        do {
+        System.out.println("Please enter the number associated with the desired snack.");
+        snackNumber = kbScan.nextInt();
+        System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
+        confirmation = kbScan.next().charAt(0);
+        } while (confirmation == 'n' || confirmation == 'N');
+        
+        return snackNumber;
+    }
+    
 }
