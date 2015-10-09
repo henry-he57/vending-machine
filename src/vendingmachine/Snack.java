@@ -76,7 +76,11 @@ public class Snack {
      * 
      * @param name Snack that has its qty being decreased by 1
      */
-    public void snackPurchased(Snack name){
-        name.qty --;
+    public void snackPurchased(Snack name, int money){
+        if (name.price <= money){
+            name.qty --;
+        }else {
+            System.out.println("Not enough dolla dolla bills y'all.");
+        }
     }
 }
