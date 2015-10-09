@@ -74,6 +74,8 @@ public class VendingMachine {
         vm.displaySnacks();
         vm.insertMoney();
         vm.getSelection();
+        
+        
     }
 
     
