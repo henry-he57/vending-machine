@@ -71,5 +71,12 @@ public class Snack {
     public void setQty(int qty) {
         this.qty = qty;
     }
-
+    
+    /**
+     * 
+     * @param name Snack that has its qty being decreased by 1
+     */
+    public void snackPerchased(Snack name){
+        name.qty --;
+    }
 }
