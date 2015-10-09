@@ -21,6 +21,7 @@ public class Display {
     public double promptInsert(){
         System.out.println("Please insert amount of money: ");
         double amount = kbScan.nextDouble();
+        System.out.println("Your balance: $" + amount);
         return amount;
     }
 }

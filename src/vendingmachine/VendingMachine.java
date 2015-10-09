@@ -67,7 +67,7 @@ public class VendingMachine {
         loadStartingSnacks(vm);
         vm.displaySnacks();
         vm.insertMoney();
-        System.out.println(vm.getMoneyIn());
+
     }
 
     /**
