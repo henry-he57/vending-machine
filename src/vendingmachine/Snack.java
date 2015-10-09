@@ -75,8 +75,9 @@ public class Snack {
     /**
      * 
      * @param name Snack that has its qty being decreased by 1
+     * @param money used to check price of snack to money imputed
      */
-    public void snackPurchased(Snack name, int money){
+    public void snackPurchased(Snack name, double money){
         if (name.price <= money){
             name.qty --;
         }else {
