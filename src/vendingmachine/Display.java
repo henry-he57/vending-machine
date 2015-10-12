@@ -33,7 +33,7 @@ public class Display {
     public double promptInsert() {
         System.out.println("Please input number of toonies");
         int toonieAmount = kbScan.nextInt();
-        
+        addUserCoin(0, toonieAmount);
         System.out.println("Please input number of loonies");
         int loonieAmount = kbScan.nextInt();
         System.out.println("Please input number of quarters");

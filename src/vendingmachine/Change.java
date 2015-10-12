@@ -30,7 +30,7 @@ public class Change {
         return changeValue;
     }
     
-    public void addCoinType(int type, int qty){
+    public void addUserCoin(int type, int qty){
         userChange[type]+= qty;
     }
     
