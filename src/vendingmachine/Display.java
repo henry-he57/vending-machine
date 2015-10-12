@@ -17,18 +17,27 @@ public class Display {
 
     Scanner kbScan = new Scanner(System.in);
     Change change = new Change();
+    Change changeInfo[] = new Change[5];
 
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
 
+    public void addNewCoin(int i, Change s){
+        changeInfo[i] = s;
+    }
+    
     public void loadCoins() {
-        Change toonie = new Change(0, "Toonie", 2.00, 0);
-        Change loonie = new Change(1, "Loonie", 1.00, 0);
-        Change quarter = new Change(2, "Quarter", 0.25, 0);
-        Change dime = new Change(3, "Dime", 0.10, 0);
-        Change nickel = new Change(4, "Nickel", 0.05, 0);
-
+        Change toonie = new Change("Toonie", 2.00, 0);
+        addNewCoin(0, toonie);
+        Change loonie = new Change("Loonie", 1.00, 0);
+        addNewCoin(1, loonie);
+        Change quarter = new Change("Quarter", 0.25, 0);
+        addNewCoin(2, quarter);
+        Change dime = new Change("Dime", 0.10, 0);
+        addNewCoin(3, dime);
+        Change nickel = new Change("Nickel", 0.05, 0);
+        addNewCoin(4, nickel);
     }
 
     public double promptInsert() {

@@ -11,24 +11,26 @@ package vendingmachine;
  */
 public class Change {
 
-    private String[] coinDescription = new String[5];   //name of coin
-    private double[] coinValue = new double[5]; //value of coin
-    private int[] change = new int[5];  //amount of coin type in machine]
-    private int[] userChange = new int[5];  //amount of coin type inserted by user
+    private String coinDescription;   //name of coin
+    private double coinValue; //value of coin
+    private int change;  //amount of coin type in machine]
+    private int userChange;  //amount of coin type inserted by user
 
     public Change() {
 
     }
 
-    public Change(int newArrayValue, String newDescription, double newValue, int newChange) {
-        coinDescription[newArrayValue] = newDescription;
-        coinValue[newArrayValue] = newValue;
-        change[newArrayValue] = newChange;
+    public Change(String newDescription, double newValue, int newChange) {
+        coinDescription = newDescription;
+        coinValue = newValue;
+        change = newChange;
     }
 
     public double add() {
-        double changeValue = 0;
+        double changeValue = 0;      
         for (int count = 0; count < 5; count++) {
+            System.out.println(coinValue[count]);
+            System.out.println(userChange[count]);
             changeValue += coinValue[count] * userChange[count];
         }
         return changeValue;
