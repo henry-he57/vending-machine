@@ -21,9 +21,13 @@ public class Change {
         coinValue[newArrayValue] = newValue;
         change[newArrayValue] = newChange;
     }
-
-    public double add() {
-        
+    
+    public double add(){
+        double changeValue = 0;
+        for (int count = 0; count < 5; count ++){
+        changeValue = changeValue + coinValue[count] * change[count];
+        }
+        return changeValue;
     }
     
     public void addCoinType(int type, int qty){

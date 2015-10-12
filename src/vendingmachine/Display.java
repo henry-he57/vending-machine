@@ -45,7 +45,8 @@ public class Display {
 
         
         
-        addChange(toonieAmount, loonieAmount, quarterAmount, dimeAmount, nickelAmount);
+        double money =  .add();
+        return money;
     }
 
     public int promptSelection(Snack[] s) {
