@@ -28,35 +28,33 @@ public class Change {
 
     public double add() {
         double changeValue = 0;      
-        for (int count = 0; count < 5; count++) {
-            System.out.println(coinValue[count]);
-            System.out.println(userChange[count]);
-            changeValue += coinValue[count] * userChange[count];
-        }
+        System.out.println(coinValue);
+        System.out.println(userChange);
+        changeValue += coinValue * userChange;
         return changeValue;
     }
 
     public void addUserCoin(int type, int qty) {
-        userChange[type] = qty;
-        System.out.println(userChange[type]);
+        userChange = qty;
+        System.out.println(userChange);
     }
 
     public void add(int type) {
-        change[type]++;
+        change ++;
     }
 
     public void add(int type, int qty) {
-        change[type] += qty;
+        change += qty;
     }
 
     public void empty() {
         for (int count = 0; count < 5; count++) {
-            change[count] = 0;
+            change = 0;
         }
     }
 
     public void remove(int type, int qty) {
-        change[type] -= qty;
+        change -= qty;
     }
 
 }
