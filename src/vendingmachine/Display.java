@@ -21,7 +21,7 @@ public class Display {
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
-
+    
     public void loadCoins() {
         Change toonie = new Change(0, "Toonie", 2.00, 0);
         Change loonie = new Change(1, "Loonie", 1.00, 0);
