@@ -19,7 +19,7 @@ public class VendingMachine {
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert();
-        System.out.println(moneyIn);
+        System.out.println("Your balance is: $" + moneyIn);
     }
 
     public void addNewSnack(int i, Snack s) {
