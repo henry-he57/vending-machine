@@ -30,17 +30,19 @@ public class Display {
 
     }
 
-    public void promptInsert() {
+    public double promptInsert() {
         System.out.println("Please input number of toonies");
-        double toonieAmount = kbScan.nextDouble();
+        int toonieAmount = kbScan.nextInt();
         System.out.println("Please input number of loonies");
-        double loonieAmount = kbScan.nextDouble();
+        int loonieAmount = kbScan.nextInt();
         System.out.println("Please input number of quarters");
-        double quarterAmount = kbScan.nextDouble();
+        int quarterAmount = kbScan.nextInt();
         System.out.println("Please input number of dimes");
-        double dimeAmount = kbScan.nextDouble();
+        int dimeAmount = kbScan.nextInt();
         System.out.println("Please input number of nickels");
-        double nickelAmount = kbScan.nextDouble();
+        int nickelAmount = kbScan.nextInt();
+
+        
         
         addChange(toonieAmount, loonieAmount, quarterAmount, dimeAmount, nickelAmount);
     }
