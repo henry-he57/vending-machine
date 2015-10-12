@@ -18,11 +18,19 @@ public class Display {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
     
-    public double promptInsert(){
-        System.out.println("Please insert amount of money: ");
-        double amount = kbScan.nextDouble();
-        System.out.println("Your balance: $" + amount);
-        return amount;
+    public void promptInsert(){
+        System.out.println("Please input number of toonies");
+        double toonieAmount = kbScan.nextDouble();
+        System.out.println("Please input number of loonies");
+        double loonieAmount = kbScan.nextDouble();
+        System.out.println("Please input number of quarters");
+        double quarterAmount = kbScan.nextDouble();
+        System.out.println("Please input number of dimes");
+        double dimeAmount = kbScan.nextDouble();
+        System.out.println("Please input number of nickels");
+        double nickelAmount = kbScan.nextDouble();
+        
+        .addChange(toonieAmount, loonieAmount, quarterAmount, dimeAmount, nickelAmount);
     }
     
     

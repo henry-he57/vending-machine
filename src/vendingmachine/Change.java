@@ -10,11 +10,9 @@ package vendingmachine;
  * @author 341167922
  */
 public class Change {
-    private int nickel;
-    private int dime;
-    private int quarter;
-    private int loonie;
-    private int toonie;
+    private String[] coinDescription = new String[5];
+    private double[] coinValue = new double[5];
+    private int[] change = new int[5];
     
     public Change(int newNickel, int newDime, int newQuarter, int newLoonie, int newToonie){
         nickel = newNickel;
@@ -22,5 +20,9 @@ public class Change {
         quarter = newQuarter;
         loonie = newLoonie;
         toonie = newToonie;
+    }
+    
+    public double Add(){
+        
     }
 }
