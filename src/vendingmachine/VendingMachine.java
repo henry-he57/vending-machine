@@ -17,30 +17,32 @@ public class VendingMachine {
     Display disp = new Display();
 
     public void insertMoney() {
-    moneyIn = disp.promptInsert();
+        disp.loadCoins();
+        moneyIn = disp.promptInsert();
     }
 
-    public void addNewSnack(int i, Snack s){
+    public void addNewSnack(int i, Snack s) {
         snackInfo[i] = s;
     }
-    
-    public void displaySnacks(){
-        for (int count = 0; count <10; count++){
+
+    public void displaySnacks() {
+        for (int count = 0; count < 10; count++) {
             System.out.print(count + ". ");
             disp.displaySnack(snackInfo[count]);
         }
     }
-    
-    public void getSelection(){
+
+    public void getSelection() {
         int snackSelection = disp.promptSelection(snackInfo);
         snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
     }
-    
+
     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
-     * @param vm    the vending machine that the snacks are all in
+     *
+     * @param vm the vending machine that the snacks are all in
      */
-    public static void loadStartingSnacks(VendingMachine m){
+    public static void loadStartingSnacks(VendingMachine m) {
         Snack lays = new Snack("Lays", 2.00, 5);
         m.addNewSnack(0, lays);
         Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
@@ -62,29 +64,21 @@ public class VendingMachine {
         Snack nerds = new Snack("Nerds", 3.00, 5);
         m.addNewSnack(9, nerds);
     }
-    
+
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
         VendingMachine vm = new VendingMachine();
-        
+
         loadStartingSnacks(vm);
         vm.displaySnacks();
         vm.insertMoney();
         vm.getSelection();
-        
-        
+
     }
 
-    
-    
-    
-    
-    
-    
-    
     /**
      * @return the bank
      */

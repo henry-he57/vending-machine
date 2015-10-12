@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vendingmachine;
+
 import java.util.*;
 import java.io.Console;
 import java.text.DecimalFormat;
@@ -13,12 +14,23 @@ import java.text.DecimalFormat;
  * @author 341167922
  */
 public class Display {
+
     Scanner kbScan = new Scanner(System.in);
-    public void displaySnack(Snack a){
+
+    public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
-    
-    public void promptInsert(){
+
+    public void loadCoins() {
+        Change toonie = new Change(0, "Toonie", 2.00, 0);
+        Change loonie = new Change(1, "Loonie", 1.00, 0);
+        Change quarter = new Change(2, "Quarter", 0.25, 0);
+        Change dime = new Change(3, "Dime", 0.10, 0);
+        Change nickel = new Change(4, "Nickel", 0.05, 0);
+
+    }
+
+    public void promptInsert() {
         System.out.println("Please input number of toonies");
         double toonieAmount = kbScan.nextDouble();
         System.out.println("Please input number of loonies");
@@ -30,23 +42,22 @@ public class Display {
         System.out.println("Please input number of nickels");
         double nickelAmount = kbScan.nextDouble();
         
-        .addChange(toonieAmount, loonieAmount, quarterAmount, dimeAmount, nickelAmount);
+        addChange(toonieAmount, loonieAmount, quarterAmount, dimeAmount, nickelAmount);
     }
-    
-    
-    public int promptSelection(Snack[] s){
-        
+
+    public int promptSelection(Snack[] s) {
+
         char confirmation = 'n';
         int snackNumber = 0;
-        
+
         do {
-        System.out.println("Please enter the number associated with the desired snack.");
-        snackNumber = kbScan.nextInt();
-        System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
-        confirmation = kbScan.next().charAt(0);
+            System.out.println("Please enter the number associated with the desired snack.");
+            snackNumber = kbScan.nextInt();
+            System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
+            confirmation = kbScan.next().charAt(0);
         } while (confirmation == 'n' || confirmation == 'N');
-        
+
         return snackNumber;
     }
-    
+
 }
