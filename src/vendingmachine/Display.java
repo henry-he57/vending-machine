@@ -18,7 +18,7 @@ public class Display {
     Scanner kbScan = new Scanner(System.in);
     Change change = new Change();
     Change changeInfo[] = new Change[5];
-
+    double userBalance =0;
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
@@ -56,8 +56,9 @@ public class Display {
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
         change.addUserCoin(4, nickelAmount);
-
-        double userBalance = change.add();
+        for (int count = 0; count < 5; count ++){
+            userBalance = changeInfo[count].add();
+        }
         return userBalance;
     }
 
