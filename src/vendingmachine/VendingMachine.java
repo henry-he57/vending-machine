@@ -19,6 +19,7 @@ public class VendingMachine {
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert();
+        System.out.println(moneyIn);
     }
 
     public void addNewSnack(int i, Snack s) {
@@ -76,7 +77,6 @@ public class VendingMachine {
         vm.displaySnacks();
         vm.insertMoney();
         vm.getSelection();
-
     }
 
     /**

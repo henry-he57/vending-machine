@@ -16,29 +16,34 @@ public class Change {
     private int[] change = new int[5];  //amount of coin type in machine]
     private int[] userChange = new int[5];  //amount of coin type inserted by user
 
+    public Change() {
+
+    }
+
     public Change(int newArrayValue, String newDescription, double newValue, int newChange) {
         coinDescription[newArrayValue] = newDescription;
         coinValue[newArrayValue] = newValue;
         change[newArrayValue] = newChange;
     }
-    
-    public double add(){
+
+    public double add() {
         double changeValue = 0;
-        for (int count = 0; count < 5; count ++){
-        changeValue = changeValue + coinValue[count] * change[count];
+        for (int count = 0; count < 5; count++) {
+            changeValue += coinValue[count] * userChange[count];
         }
         return changeValue;
     }
-    
-    public void addUserCoin(int type, int qty){
-        userChange[type]+= qty;
+
+    public void addUserCoin(int type, int qty) {
+        userChange[type] = qty;
+        System.out.println(userChange[type]);
     }
-    
-    public void add(int type){
+
+    public void add(int type) {
         change[type]++;
     }
-    
-    public void add(int type, int qty){
+
+    public void add(int type, int qty) {
         change[type] += qty;
     }
 
@@ -47,12 +52,9 @@ public class Change {
             change[count] = 0;
         }
     }
-    
-    public void remove(int type, int qty){
+
+    public void remove(int type, int qty) {
         change[type] -= qty;
     }
-    
-    
-    
-    
+
 }

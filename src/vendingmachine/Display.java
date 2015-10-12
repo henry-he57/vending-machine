@@ -16,6 +16,7 @@ import java.text.DecimalFormat;
 public class Display {
 
     Scanner kbScan = new Scanner(System.in);
+    Change change = new Change();
 
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
@@ -33,20 +34,22 @@ public class Display {
     public double promptInsert() {
         System.out.println("Please input number of toonies");
         int toonieAmount = kbScan.nextInt();
-        addUserCoin(0, toonieAmount);
+        change.addUserCoin(0, toonieAmount);
         System.out.println("Please input number of loonies");
         int loonieAmount = kbScan.nextInt();
+        change.addUserCoin(1, loonieAmount);
         System.out.println("Please input number of quarters");
         int quarterAmount = kbScan.nextInt();
+        change.addUserCoin(2, quarterAmount);
         System.out.println("Please input number of dimes");
         int dimeAmount = kbScan.nextInt();
+        change.addUserCoin(3, dimeAmount);
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
+        change.addUserCoin(4, nickelAmount);
 
-        
-        
-        double money =  .add();
-        return money;
+        double userBalance = change.add();
+        return userBalance;
     }
 
     public int promptSelection(Snack[] s) {
