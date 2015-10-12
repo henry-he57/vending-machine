@@ -16,31 +16,25 @@ public class Change {
     private int change;  //amount of coin type in machine]
     private int userChange;  //amount of coin type inserted by user
 
-    public Change() {
-
-    }
-
     public Change(String newDescription, double newValue, int newChange) {
         coinDescription = newDescription;
         coinValue = newValue;
         change = newChange;
     }
 
-    public double add() {
-        double changeValue = 0;      
-        System.out.println(coinValue);
-        System.out.println(userChange);
-        changeValue += coinValue * userChange;
+    public double add(Change c) {
+        double changeValue = 0;
+        changeValue += c.coinValue * c.userChange;
         return changeValue;
     }
 
-    public void addUserCoin(int type, int qty) {
+    public void addUserCoin(int qty) {
         userChange = qty;
         System.out.println(userChange);
     }
 
     public void add(int type) {
-        changeInfo[].change;
+        //changeInfo[].change;
     }
 
     public void add(int type, int qty) {
