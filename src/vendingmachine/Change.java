@@ -42,7 +42,7 @@ public class Change {
     }
 
     public void add(int type) {
-        change[type]++;
+        changeInfo[].change;
     }
 
     public void add(int type, int qty) {
