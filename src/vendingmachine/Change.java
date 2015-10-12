@@ -13,7 +13,8 @@ public class Change {
 
     private String[] coinDescription = new String[5];   //name of coin
     private double[] coinValue = new double[5]; //value of coin
-    private int[] change = new int[5];  //amount of coin type in machine
+    private int[] change = new int[5];  //amount of coin type in machine]
+    private int[] userChange = new int[5];  //amount of coin type inserted by user
 
     public Change(int newArrayValue, String newDescription, double newValue, int newChange) {
         coinDescription[newArrayValue] = newDescription;
@@ -25,8 +26,8 @@ public class Change {
         
     }
     
-    public void addCoinType(int type, int amount){
-        change[0]+= toonieAmount;
+    public void addCoinType(int type, int qty){
+        userChange[type]+= qty;
     }
     
     public void add(int type){
