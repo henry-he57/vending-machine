@@ -30,11 +30,10 @@ public class Change {
 
     public void addUserCoin(int qty) {
         userChange = qty;
-        System.out.println(userChange);
     }
 
     public void add(int type) {
-        //changeInfo[].change;
+        change++;
     }
 
     public void add(int type, int qty) {
@@ -42,13 +41,20 @@ public class Change {
     }
 
     public void empty() {
-        for (int count = 0; count < 5; count++) {
             change = 0;
-        }
     }
 
     public void remove(int type, int qty) {
         change -= qty;
+    }
+    
+    public void remove(double amt){
+        
+    }
+    
+    public String toString(){
+        
+        return
     }
 
 }

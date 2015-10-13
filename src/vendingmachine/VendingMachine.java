@@ -44,7 +44,7 @@ public class VendingMachine {
      * @param vm the vending machine that the snacks are all in
      */
     public static void loadStartingSnacks(VendingMachine m) {
-        Snack lays = new Snack("Lays", 2.00, 5);
+        Snack lays = new Snack("Lays", 2.00, 0);
         m.addNewSnack(0, lays);
         Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
         m.addNewSnack(1, doritos);
