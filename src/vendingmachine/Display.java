@@ -109,9 +109,9 @@ public class Display {
         return snackNumber;
     }
 
-    public void maintenance() {
+    public void maintenance(Snack snackArray[]) {
         int selection = 0;
-        System.out.println("What would you like to do? 1 = 'empty', 2 = 'restock' or 3 = 'add change'");
+        System.out.println("What would you like to do? 1 = 'empty change', 2 = 'restock' or 3 = 'add change'");
         selection = kbScan.nextInt();
         if (selection == 1){
             for (int count = 0; count < 5; count ++){
@@ -119,8 +119,9 @@ public class Display {
             }
         }else if(selection == 2){
             for (int count = 0; count < 10; count ++){
-                System.out.println("How many " + snackInfo[count] + "s are you adding?");
-                int
+                System.out.println("How many " + snackArray[count] + "s are you adding?");
+                int qty = kbScan.nextInt();
+                snackArray[count].snackRestock(qty);
             }
         }else {
             for (int count = 0; count < 5; count ++){

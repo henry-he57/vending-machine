@@ -90,6 +90,6 @@ public class VendingMachine {
         moneyIn = newMoneyIn;
     }
     public void maintenance(){
-        disp.maintenance();
+        disp.maintenance(snackInfo);
     }
 }
