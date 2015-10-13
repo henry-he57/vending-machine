@@ -72,4 +72,11 @@ public class Snack {
         this.qty = qty;
     }
     
+    public void snackPurchased(Snack name, double money){
+        if (name.price <= money){
+            name.qty --;
+        }else {
+            System.out.println("Not enough dolla dolla bills y'all.");
+        }
+    }
 }

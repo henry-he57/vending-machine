@@ -38,33 +38,15 @@ public class VendingMachine {
         snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
     }
 
+    public void loadSnacks(VendingMachine vm){
+        disp.loadStartingSnacks(vm);
+    }
     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
      *
      * @param vm the vending machine that the snacks are all in
      */
-    public static void loadStartingSnacks(VendingMachine m) {
-        Snack lays = new Snack("Lays", 2.00, 5);
-        m.addNewSnack(0, lays);
-        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
-        m.addNewSnack(1, doritos);
-        Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
-        m.addNewSnack(2, ruffles);
-        Snack marsBar = new Snack("Mars Bar", 1.50, 5);
-        m.addNewSnack(3, marsBar);
-        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
-        m.addNewSnack(4, coffeeCrisp);
-        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
-        m.addNewSnack(5, hersheys);
-        Snack mentos = new Snack("Mentos", 2.00, 5);
-        m.addNewSnack(6, mentos);
-        Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
-        m.addNewSnack(7, twizzlers);
-        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
-        m.addNewSnack(8, fuzzyPeaches);
-        Snack nerds = new Snack("Nerds", 3.00, 5);
-        m.addNewSnack(9, nerds);
-    }
+
 
     /**
      *
@@ -73,7 +55,7 @@ public class VendingMachine {
     public static void main(String[] args) {
         VendingMachine vm = new VendingMachine();
 
-        loadStartingSnacks(vm);
+        vm.loadSnacks(vm);
         vm.displaySnacks();
         vm.insertMoney();
         vm.getSelection();
