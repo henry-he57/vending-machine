@@ -25,12 +25,13 @@ public class Change {
     public double add(Change c) {
         double changeValue = 0;
         changeValue += c.coinValue * c.userChange;
+        Math.round((coinValue)* 0.05);
+        
         return changeValue;
     }
 
     public void addUserCoin(int qty) {
         userChange = qty;
-        System.out.println(userChange);
     }
 
     public void add(int type) {
@@ -42,13 +43,11 @@ public class Change {
     }
 
     public void empty() {
-        for (int count = 0; count < 5; count++) {
-            change = 0;
-        }
+        change = 0;
     }
 
-    public void remove(int type, int qty) {
-        change -= qty;
+    public void remove(int qty) {
+        userChange -= qty;
     }
 
 }

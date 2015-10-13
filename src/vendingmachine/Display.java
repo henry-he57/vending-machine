@@ -17,15 +17,16 @@ public class Display {
 
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
-    double userBalance =0;
+    double userBalance = 0;
+
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
     }
 
-    public void addNewCoin(int i, Change s){
+    public void addNewCoin(int i, Change s) {
         changeInfo[i] = s;
     }
-    
+
     public void loadCoins() {
         Change toonie = new Change("Toonie", 2.00, 0);
         addNewCoin(0, toonie);
@@ -55,7 +56,7 @@ public class Display {
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
         changeInfo[4].addUserCoin(nickelAmount);
-        for (int count = 0; count < 5; count ++){
+        for (int count = 0; count < 5; count++) {
             userBalance += changeInfo[count].add(changeInfo[count]);
         }
         return userBalance;
@@ -76,4 +77,18 @@ public class Display {
         return snackNumber;
     }
 
+    public void maintenance() {
+        int selection = 0;
+        System.out.println("What would you like to do? 1 = 'empty', 2 = 'restock' or 3 = 'add change'");
+        selection = kbScan.nextInt();
+        if (selection == 1){
+            for (int count = 0; count < 5; count ++){
+                changeInfo[count].empty();
+            }
+        }else if(selection == 2){
+            
+        }else {
+            
+        }
+    }
 }

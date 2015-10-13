@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package vendingmachine;
-
 /**
  *
  * @author 341167922
@@ -15,7 +14,8 @@ public class VendingMachine {
     private double moneyIn;
     private Snack[] snackInfo = new Snack[10];
     Display disp = new Display();
-
+    
+    
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert();
@@ -77,6 +77,7 @@ public class VendingMachine {
         vm.displaySnacks();
         vm.insertMoney();
         vm.getSelection();
+        vm.maintenance();
     }
 
     /**
@@ -105,5 +106,8 @@ public class VendingMachine {
      */
     public void setMoneyIn(int newMoneyIn) {
         moneyIn = newMoneyIn;
+    }
+    public void maintenance(){
+        disp.maintenance();
     }
 }
