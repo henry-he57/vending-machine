@@ -25,6 +25,8 @@ public class Change {
     public double add(Change c) {
         double changeValue = 0;
         changeValue += c.coinValue * c.userChange;
+        Math.round((coinValue)* 0.05);
+        
         return changeValue;
     }
 
@@ -41,11 +43,11 @@ public class Change {
     }
 
     public void empty() {
-            change = 0;
+        change = 0;
     }
 
-    public void remove(int type, int qty) {
-        change -= qty;
+    public void remove(int qty) {
+        userChange -= qty;
     }
     
     public void remove(double amt){
@@ -54,7 +56,7 @@ public class Change {
     
     public String toString(){
         
-        return
+        return "thing";
     }
 
 }

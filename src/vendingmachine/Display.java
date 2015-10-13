@@ -81,4 +81,18 @@ public class Display {
         return snackNumber;
     }
 
+    public void maintenance() {
+        int selection = 0;
+        System.out.println("What would you like to do? 1 = 'empty', 2 = 'restock' or 3 = 'add change'");
+        selection = kbScan.nextInt();
+        if (selection == 1){
+            for (int count = 0; count < 5; count ++){
+                changeInfo[count].empty();
+            }
+        }else if(selection == 2){
+            
+        }else {
+            
+        }
+    }
 }
