@@ -92,9 +92,16 @@ public class Display {
                 changeInfo[count].empty();
             }
         }else if(selection == 2){
-            
+            for (int count = 0; count < 10; count ++){
+                System.out.println("How many " + snackInfo[count] + "s are you adding?");
+                int
+            }
         }else {
-            
+            for (int count = 0; count < 5; count ++){
+                System.out.println("How many " + changeInfo[count] + "s are you adding?");
+                int qty = kbScan.nextInt();
+                changeInfo[count].stockChange(changeInfo[count], qty);
+            }
         }
     }
 }

@@ -58,5 +58,7 @@ public class Change {
         
         return "thing";
     }
-
+    public void stockChange(Change c, int qty){
+        c.change += qty;
+    }
 }
