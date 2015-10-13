@@ -25,7 +25,6 @@ public class Change {
     public double add(Change c) {
         double changeValue = 0;
         changeValue += c.coinValue * c.userChange;
-        Math.round((coinValue)* 0.05);
         
         return changeValue;
     }

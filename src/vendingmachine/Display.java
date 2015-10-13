@@ -15,7 +15,6 @@ public class Display {
 
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
-    double userBalance = 0;
 
         /**
      * declares all the snacks and sets them all to a spot in the 'name' array
@@ -66,7 +65,7 @@ public class Display {
         addNewCoin(4, nickel);
     }
 
-    public double promptInsert() {
+    public double promptInsert(double moneyIn) {
         System.out.println("Please input number of toonies");
         int toonieAmount = kbScan.nextInt();
         changeInfo[0].addUserCoin(toonieAmount);
@@ -83,9 +82,9 @@ public class Display {
         int nickelAmount = kbScan.nextInt();
         changeInfo[4].addUserCoin(nickelAmount);
         for (int count = 0; count < 5; count++) {
-            userBalance += changeInfo[count].add(changeInfo[count]);
+            moneyIn += changeInfo[count].add(changeInfo[count]);
         }
-        return userBalance;
+        return moneyIn;
     }
 
     public int promptSelection(Snack[] s) {
