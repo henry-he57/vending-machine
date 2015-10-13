@@ -6,8 +6,6 @@
 package vendingmachine;
 
 import java.util.*;
-import java.io.Console;
-import java.text.DecimalFormat;
 
 /**
  *
