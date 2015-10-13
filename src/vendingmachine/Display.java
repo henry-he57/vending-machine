@@ -20,7 +20,7 @@ public class Display {
     double userBalance = 0;
 
     public void displaySnack(Snack a) {
-        System.out.println(a.getName() + "  " + a.getPrice() + "  " + a.getQty());
+        System.out.println(a.getName() + "  Price: $" + a.getPrice() + "  Amount Available: " + a.getQty());
     }
 
     public void addNewCoin(int i, Change s) {
@@ -64,16 +64,22 @@ public class Display {
 
     public int promptSelection(Snack[] s) {
 
-        char confirmation = 'n';
-        int snackNumber = 0;
+        char confirmation;
+        int snackNumber;
 
         do {
-            System.out.println("Please enter the number associated with the desired snack.");
-            snackNumber = kbScan.nextInt();
+            do {
+                System.out.println("Please enter the number associated with the desired snack.");
+                snackNumber = kbScan.nextInt();
+                if (s[snackNumber].getQty() == 0) {
+                    System.out.println("Item not in stock. Please try again.");
+                }
+            } while (s[snackNumber].getQty() == 0);
+
             System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
-        } while (confirmation == 'n' || confirmation == 'N');
-
+        } while (confirmation == 'n' || confirmation == 'N');   
+        
         return snackNumber;
     }
 

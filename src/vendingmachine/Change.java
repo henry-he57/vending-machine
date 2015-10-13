@@ -35,7 +35,7 @@ public class Change {
     }
 
     public void add(int type) {
-        //changeInfo[].change;
+        change++;
     }
 
     public void add(int type, int qty) {
@@ -48,6 +48,15 @@ public class Change {
 
     public void remove(int qty) {
         userChange -= qty;
+    }
+    
+    public void remove(double amt){
+        
+    }
+    
+    public String toString(){
+        
+        return
     }
 
 }
