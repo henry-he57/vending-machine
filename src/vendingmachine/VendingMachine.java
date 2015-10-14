@@ -42,9 +42,6 @@ public class VendingMachine {
         disp.loadStartingSnacks(vm);
     }
 
-    public void maintenance() {
-        disp.maintenance();
-    }
 
     /**
      *

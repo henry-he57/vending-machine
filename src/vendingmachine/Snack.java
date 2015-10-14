@@ -14,11 +14,15 @@ public class Snack {
     private String name;
     private Double price;
     private int qty;
+    private double realPrice;
+    private int snacksSold;
 
-    public Snack(String newName, double newPrice, int startQty) {
+    public Snack(String newName, double newPrice, int startQty, double newRealPrice) {
         name = newName;
         price = newPrice;
         qty = startQty;
+        realPrice = newRealPrice;
+        snacksSold = 0;
     }
 
     /**
@@ -64,7 +68,30 @@ public class Snack {
     public int getQty() {
         return qty;
     }
-
+    /**
+     * @return the realPrice
+     */
+    public Double getRealPrice() {
+        return realPrice;
+    }
+    /**
+     * @param realPrice the realPrice to set
+     */
+    public void setRealPrice(double realPrice){
+        this.realPrice = realPrice;
+    }
+    /**
+     * @return the snacksSold
+     */
+    public int getSnacksSold() {
+        return snacksSold;
+    }
+    /**
+     * @param snacksSold the snacksSold to set
+     */
+     public void increaseSnacksSold(){
+        this.snacksSold ++;
+    }
     /**
      * @param qty the qty to set
      */
