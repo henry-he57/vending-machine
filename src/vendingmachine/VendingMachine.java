@@ -35,13 +35,16 @@ public class VendingMachine {
 
     public void getSelection() {
         int snackSelection = disp.promptSelection(snackInfo);
-        snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
+        if (snackSelection != 10) {
+            snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
+        } else {
+            disp.maintenance(snackInfo);
+        }
     }
 
     public void loadSnacks(VendingMachine vm) {
         disp.loadStartingSnacks(vm);
     }
-
 
     /**
      *
@@ -51,10 +54,12 @@ public class VendingMachine {
         VendingMachine vm = new VendingMachine();
 
         vm.loadSnacks(vm);
-        vm.displaySnacks();
-        vm.insertMoney();
-        vm.getSelection();
-        vm.maintenance();
+        do {
+            vm.displaySnacks();
+            vm.insertMoney();
+            vm.getSelection();
+        } while (vm.isThatAll() == false);
+        // I changed the maintenance calling so it will only be called if 10 if given when selecting a snack - Adam
     }
 
     /**
@@ -84,7 +89,9 @@ public class VendingMachine {
     public void setMoneyIn(int newMoneyIn) {
         moneyIn = newMoneyIn;
     }
-    public void maintenance(){
-        disp.maintenance(snackInfo);
+
+    public boolean isThatAll() {
+        boolean isThatAll = disp.isThatAll();
+        return isThatAll;
     }
 }

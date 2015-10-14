@@ -16,7 +16,7 @@ public class Display {
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
 
-        /**
+     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
      *
      * @param vm the vending machine that the snacks are all in
@@ -96,15 +96,21 @@ public class Display {
             do {
                 System.out.println("Please enter the number associated with the desired snack.");
                 snackNumber = kbScan.nextInt();
-                if (s[snackNumber].getQty() == 0) {
+                if (snackNumber == 10){
+                    break;
+                } else if (s[snackNumber].getQty() == 0) {
                     System.out.println("Item not in stock. Please try again.");
                 }
             } while (s[snackNumber].getQty() == 0);
-
+            if(snackNumber == 10){
+                break;
+            }
             System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
-        } while (confirmation == 'n' || confirmation == 'N');   
-        s[snackNumber].increaseSnacksSold();
+        } while (confirmation == 'n' || confirmation == 'N');  
+        if (snackNumber != 10){
+            s[snackNumber].increaseSnacksSold();
+        }
         return snackNumber;
     }
 
@@ -135,5 +141,17 @@ public class Display {
             }
             System.out.println(proffit);
         }
+    }
+    public boolean isThatAll(){
+        boolean isThatAllBool;
+        char isThatAllChar;
+        System.out.println("Is that all? (Y/N): ");
+        isThatAllChar = kbScan.next().charAt(0);
+        if (isThatAllChar == 'n'|| isThatAllChar == 'N'){
+            isThatAllBool = false;
+        } else {
+            isThatAllBool = true;
+        }
+        return isThatAllBool;
     }
 }
