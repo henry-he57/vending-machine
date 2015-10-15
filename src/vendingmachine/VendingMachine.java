@@ -33,13 +33,15 @@ public class VendingMachine {
     public void getSelection() {
         int snackSelection = disp.promptSelection(snackInfo);
         if (snackSelection != 10) {
-            snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
-            moneyIn = getMoneyIn() - snackInfo[snackSelection].getPrice();
+            boolean enoughMoney = snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
+            if (enoughMoney == true) {
+                moneyIn -= snackInfo[snackSelection].getPrice();
+            }
         } else {
             disp.maintenance(snackInfo);
         }
     }
-            
+
     public void addNewSnack(int i, Snack s) {
         snackInfo[i] = s;
     }
@@ -99,7 +101,8 @@ public class VendingMachine {
         boolean isThatAll = disp.isThatAll();
         return isThatAll;
     }
+
     public void returnMoney() {
-        disp.returnMoney();
+        disp.returnMoney(moneyIn);
     }
 }
