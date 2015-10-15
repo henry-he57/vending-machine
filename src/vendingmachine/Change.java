@@ -54,8 +54,8 @@ public class Change {
         
     }
     
-    public String toString(Change c){
-        String description = c.coinDescription;
+    public String toString(){
+        String description = coinDescription;
         return description;
     }
     
