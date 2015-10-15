@@ -5,6 +5,8 @@
  */
 package vendingmachine;
 
+import java.text.DecimalFormat;
+
 /**
  *
  * @author 341167922
@@ -19,7 +21,10 @@ public class VendingMachine {
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert(moneyIn);
-        System.out.println("Your balance is: $" + moneyIn);
+        moneyIn = Math.round(moneyIn * 100d) / 100d;
+        DecimalFormat a = new DecimalFormat ("#.00");
+        System.out.println("Your balance is: $" + a.format(moneyIn));
+
     }
 
     public void addNewSnack(int i, Snack s) {
@@ -37,6 +42,7 @@ public class VendingMachine {
         int snackSelection = disp.promptSelection(snackInfo);
         if (snackSelection != 10) {
             snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
+            moneyIn = getMoneyIn() - snackInfo[snackSelection].getPrice();
         } else {
             disp.maintenance(snackInfo);
         }
@@ -55,10 +61,12 @@ public class VendingMachine {
 
         vm.loadSnacks(vm);
         do {
-            vm.displaySnacks();
-            vm.insertMoney();
-            vm.getSelection();
-        } while (vm.isThatAll() == false);
+            do {
+                vm.displaySnacks();
+                vm.insertMoney();
+                vm.getSelection();
+            } while (vm.isThatAll() == false);
+        } while (1 > 0);
         // I changed the maintenance calling so it will only be called if 10 if given when selecting a snack - Adam
     }
 

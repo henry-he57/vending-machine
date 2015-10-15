@@ -110,6 +110,7 @@ public class Display {
         } while (confirmation == 'n' || confirmation == 'N');  
         if (snackNumber != 10){
             s[snackNumber].increaseSnacksSold();
+            
         }
         return snackNumber;
     }
@@ -128,7 +129,7 @@ public class Display {
                 int qty = kbScan.nextInt();
                 snackArray[count].snackRestock(qty);
             }
-        }else if (selection == 30){
+        }else if (selection == 3){
             for (int count = 0; count < 5; count ++){
                 System.out.println("How many " + changeInfo[count] + "s are you adding?");
                 int qty = kbScan.nextInt();
@@ -139,7 +140,7 @@ public class Display {
             for (int count = 0; count < 10; count ++){
                 proffit += (snackArray[count].getSnacksSold() * snackArray[count].getPrice())-(snackArray[count].getSnacksSold() * snackArray[count].getRealPrice());
             }
-            System.out.println(proffit);
+            System.out.println("$" + proffit);
         }
     }
     public boolean isThatAll(){
