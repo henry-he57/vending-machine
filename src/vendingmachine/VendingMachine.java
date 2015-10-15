@@ -99,4 +99,7 @@ public class VendingMachine {
         boolean isThatAll = disp.isThatAll();
         return isThatAll;
     }
+    public void returnMoney() {
+        disp.returnMoney();
+    }
 }

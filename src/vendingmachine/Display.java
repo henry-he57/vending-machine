@@ -119,9 +119,19 @@ public class Display {
         } while (confirmation == 'n' || confirmation == 'N');
         if (snackNumber != 10) {
             s[snackNumber].increaseSnacksSold();
-
         }
         return snackNumber;
+    }
+
+    public void modUserChange(double price) {
+        double a;
+        int b;
+        for (int count = 0; count < 5; count ++){
+            a = price / changeInfo[count].getCoinValue();
+            b = (int) a;
+            changeInfo[count].remove(b);
+            System.out.println(changeInfo[count].getUserChange());
+        }
     }
 
     public void maintenance(Snack snackArray[]) {
@@ -162,11 +172,14 @@ public class Display {
             isThatAllBool = false;
         } else {
             isThatAllBool = true;
-            for (int count =0; count < 5; count ++){
-                System.out.println("You get " + changeInfo[count].getUserChange() + changeInfo[count].getCoinDescription() + "(s) back");
-                changeInfo[count].setUserChange(changeInfo[count].getUserChange());
-            }
         }
         return isThatAllBool;
+    }
+
+    public void returnMoney() {
+        for (int count = 0; count < 5; count++) {
+            System.out.println("You get " + changeInfo[count].getUserChange() + changeInfo[count].getCoinDescription() + "(s) back");
+            changeInfo[count].setUserChange(changeInfo[count].getUserChange());
+        }
     }
 }

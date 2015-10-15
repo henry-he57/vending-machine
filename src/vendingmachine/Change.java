@@ -53,7 +53,9 @@ public class Change {
     public void remove(double amt){
         
     }
-    
+    public double getCoinValue(){
+        return coinValue;
+    }
     public String getCoinDescription(){
         return coinDescription;
     }
