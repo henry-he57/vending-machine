@@ -5,6 +5,7 @@
  */
 package vendingmachine;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -15,6 +16,7 @@ public class Display {
 
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
+    DecimalFormat df = new DecimalFormat("#.00");
 
     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
@@ -89,6 +91,8 @@ public class Display {
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
         }
+        moneyIn = Math.round(moneyIn * 100d) / 100d;
+        System.out.println("Your balance is: $" + df.format(moneyIn));
         return moneyIn;
     }
 
@@ -115,14 +119,14 @@ public class Display {
         } while (confirmation == 'n' || confirmation == 'N');
         if (snackNumber != 10) {
             s[snackNumber].increaseSnacksSold();
-            
+
         }
         return snackNumber;
     }
 
     public void maintenance(Snack snackArray[]) {
         int selection = 0;
-        System.out.println("What would you like to do? 1 = 'empty change', 2 = 'restock', 3 = 'add change' or 4 = 'calculate profit'");
+        System.out.println("What would you like to do? 1 = 'Empty Change', 2 = 'Restock', 3 = 'Add Change' or 4 = 'Calculate Profit'");
         selection = kbScan.nextInt();
         if (selection == 1) {
             for (int count = 0; count < 5; count++) {
