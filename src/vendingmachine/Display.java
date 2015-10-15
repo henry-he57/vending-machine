@@ -16,7 +16,7 @@ public class Display {
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
 
-     /**
+    /**
      * declares all the snacks and sets them all to a spot in the 'name' array
      *
      * @param vm the vending machine that the snacks are all in
@@ -43,7 +43,7 @@ public class Display {
         Snack nerds = new Snack("Nerds", 3.00, 5, 0.30);
         vm.addNewSnack(9, nerds);
     }
-    
+
     public void displaySnack(Snack a) {
         System.out.println(a.getName() + "  Price: $" + a.getPrice() + "  Amount Available: " + a.getQty());
     }
@@ -53,15 +53,15 @@ public class Display {
     }
 
     public void loadCoins() {
-        Change toonie = new Change("Toonie", 2.00, 0);
+        Change toonie = new Change("Toonie", 2.00, 10);
         addNewCoin(0, toonie);
-        Change loonie = new Change("Loonie", 1.00, 0);
+        Change loonie = new Change("Loonie", 1.00, 10);
         addNewCoin(1, loonie);
-        Change quarter = new Change("Quarter", 0.25, 0);
+        Change quarter = new Change("Quarter", 0.25, 10);
         addNewCoin(2, quarter);
-        Change dime = new Change("Dime", 0.10, 0);
+        Change dime = new Change("Dime", 0.10, 10);
         addNewCoin(3, dime);
-        Change nickel = new Change("Nickel", 0.05, 0);
+        Change nickel = new Change("Nickel", 0.05, 10);
         addNewCoin(4, nickel);
     }
 
@@ -69,18 +69,23 @@ public class Display {
         System.out.println("Please input number of toonies");
         int toonieAmount = kbScan.nextInt();
         changeInfo[0].addUserCoin(toonieAmount);
+        changeInfo[0].add(toonieAmount);
         System.out.println("Please input number of loonies");
         int loonieAmount = kbScan.nextInt();
         changeInfo[1].addUserCoin(loonieAmount);
+        changeInfo[1].add(loonieAmount);
         System.out.println("Please input number of quarters");
         int quarterAmount = kbScan.nextInt();
         changeInfo[2].addUserCoin(quarterAmount);
+        changeInfo[2].add(quarterAmount);
         System.out.println("Please input number of dimes");
         int dimeAmount = kbScan.nextInt();
         changeInfo[3].addUserCoin(dimeAmount);
+        changeInfo[3].add(dimeAmount);
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
         changeInfo[4].addUserCoin(nickelAmount);
+        changeInfo[4].add(nickelAmount);
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
         }
@@ -96,19 +101,19 @@ public class Display {
             do {
                 System.out.println("Please enter the number associated with the desired snack.");
                 snackNumber = kbScan.nextInt();
-                if (snackNumber == 10){
+                if (snackNumber == 10) {
                     break;
                 } else if (s[snackNumber].getQty() == 0) {
                     System.out.println("Item not in stock. Please try again.");
                 }
             } while (s[snackNumber].getQty() == 0);
-            if(snackNumber == 10){
+            if (snackNumber == 10) {
                 break;
             }
             System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
-        } while (confirmation == 'n' || confirmation == 'N');  
-        if (snackNumber != 10){
+        } while (confirmation == 'n' || confirmation == 'N');
+        if (snackNumber != 10) {
             s[snackNumber].increaseSnacksSold();
             
         }
@@ -119,36 +124,37 @@ public class Display {
         int selection = 0;
         System.out.println("What would you like to do? 1 = 'empty change', 2 = 'restock', 3 = 'add change' or 4 = 'calculate profit'");
         selection = kbScan.nextInt();
-        if (selection == 1){
-            for (int count = 0; count < 5; count ++){
+        if (selection == 1) {
+            for (int count = 0; count < 5; count++) {
                 changeInfo[count].empty();
             }
-        }else if(selection == 2){
-            for (int count = 0; count < 10; count ++){
-                System.out.println("How many " + snackArray[count] + "s are you adding?");
+        } else if (selection == 2) {
+            for (int count = 0; count < 10; count++) {
+                System.out.println("How many " + snackArray[count].getName() + "s are you adding?");
                 int qty = kbScan.nextInt();
                 snackArray[count].snackRestock(qty);
             }
-        }else if (selection == 3){
-            for (int count = 0; count < 5; count ++){
+        } else if (selection == 3) {
+            for (int count = 0; count < 5; count++) {
                 System.out.println("How many " + changeInfo[count] + "s are you adding?");
                 int qty = kbScan.nextInt();
                 changeInfo[count].stockChange(changeInfo[count], qty);
             }
-        }else{
-            double proffit = 0;
-            for (int count = 0; count < 10; count ++){
-                proffit += (snackArray[count].getSnacksSold() * snackArray[count].getPrice())-(snackArray[count].getSnacksSold() * snackArray[count].getRealPrice());
+        } else {
+            double profit = 0;
+            for (int count = 0; count < 10; count++) {
+                profit += (snackArray[count].getSnacksSold() * snackArray[count].getPrice()) - (snackArray[count].getSnacksSold() * snackArray[count].getRealPrice());
             }
-            System.out.println("$" + proffit);
+            System.out.println(profit);
         }
     }
-    public boolean isThatAll(){
+
+    public boolean isThatAll() {
         boolean isThatAllBool;
         char isThatAllChar;
         System.out.println("Is that all? (Y/N): ");
         isThatAllChar = kbScan.next().charAt(0);
-        if (isThatAllChar == 'n'|| isThatAllChar == 'N'){
+        if (isThatAllChar == 'n' || isThatAllChar == 'N') {
             isThatAllBool = false;
         } else {
             isThatAllBool = true;

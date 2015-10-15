@@ -13,13 +13,14 @@ public class Change {
 
     private String coinDescription;   //name of coin
     private double coinValue; //value of coin
-    private int change;  //amount of coin type in machine]
+    private int change;  //amount of coin type in machine
     private int userChange;  //amount of coin type inserted by user
 
     public Change(String newDescription, double newValue, int newChange) {
         coinDescription = newDescription;
         coinValue = newValue;
         change = newChange;
+        userChange = 0;
     }
 
     public double add(Change c) {
@@ -33,11 +34,11 @@ public class Change {
         userChange = qty;
     }
 
-    public void add(int type) {
-        change++;
+    public void add() {
+       change++;
     }
 
-    public void add(int type, int qty) {
+    public void add(int qty) {
         change += qty;
     }
 
