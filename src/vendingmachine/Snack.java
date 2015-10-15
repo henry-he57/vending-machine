@@ -89,7 +89,7 @@ public class Snack {
     /**
      * @param snacksSold the snacksSold to set
      */
-     public void increaseSnacksSold(){
+    public void increaseSnacksSold(){
         this.snacksSold ++;
     }
     /**

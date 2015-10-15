@@ -158,6 +158,10 @@ public class Display {
             isThatAllBool = false;
         } else {
             isThatAllBool = true;
+            for (int count =0; count < 5; count ++){
+                System.out.println("You get " + changeInfo[count].getUserChange() + changeInfo[count].getCoinDescription() + "(s) back");
+                changeInfo[count].setUserChange(changeInfo[count].getUserChange());
+            }
         }
         return isThatAllBool;
     }
