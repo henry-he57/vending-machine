@@ -42,10 +42,6 @@ public class VendingMachine {
         disp.loadStartingSnacks(vm);
     }
 
-    public void maintenance() {
-        disp.maintenance();
-    }
-
     /**
      *
      * @param args
@@ -87,6 +83,7 @@ public class VendingMachine {
     public void setMoneyIn(int newMoneyIn) {
         moneyIn = newMoneyIn;
     }
+    
     public void maintenance(){
         disp.maintenance(snackInfo);
     }
