@@ -126,7 +126,7 @@ public class Display {
     public void modUserChange(double price) {
         double a;
         int b;
-        for (int count = 0; count < 5; count ++){
+        for (int count = 0; count < 5; count++) {
             a = price / changeInfo[count].getCoinValue();
             b = (int) a;
             changeInfo[count].remove(b);
@@ -176,10 +176,17 @@ public class Display {
         return isThatAllBool;
     }
 
-    public void returnMoney() {
+    public void returnMoney(double moneyIn) {
+        int a;
+        double b;
         for (int count = 0; count < 5; count++) {
-            System.out.println("You get " + changeInfo[count].getUserChange() + changeInfo[count].getCoinDescription() + "(s) back");
-            changeInfo[count].setUserChange(changeInfo[count].getUserChange());
+            b = moneyIn / changeInfo[count].getCoinValue();
+            a = (int) b;
+            if (a > 0) {
+                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "(s) back");
+            }
+            b = a * changeInfo[count].getCoinValue();
+            moneyIn -= b;
         }
     }
 }
