@@ -11,12 +11,11 @@ package vendingmachine;
  */
 public class Snack {
 
-    private String name;
-    private Double price;
-    private int qty;
-    private double realPrice;
-    private int snacksSold;
-    Display disp = new Display();
+    private String name;    //name of snack
+    private Double price;   //price of snack in machine
+    private int qty;    //amount of snack in machine
+    private double realPrice;   //cost of actual snack production
+    private int snacksSold; //number of snacks sold in machine
     
     public Snack(String newName, double newPrice, int startQty, double newRealPrice) {
         name = newName;
@@ -103,7 +102,6 @@ public class Snack {
     public void snackPurchased(Snack name, double money){
         if (name.price <= money){
             name.qty --;
-            disp.modUserChange(name.price);
         }else {
             System.out.println("Not enough dolla dolla bills y'all.");
         }

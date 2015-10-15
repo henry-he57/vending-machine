@@ -13,7 +13,6 @@ import java.text.DecimalFormat;
  */
 public class VendingMachine {
 
-    private int bank;
     private double moneyIn;
     private Snack[] snackInfo = new Snack[10];
     Display disp = new Display();
@@ -34,7 +33,7 @@ public class VendingMachine {
         int snackSelection = disp.promptSelection(snackInfo);
         if (snackSelection != 10) {
             snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
-            moneyIn = getMoneyIn() - snackInfo[snackSelection].getPrice();
+            moneyIn -= snackInfo[snackSelection].getPrice();
         } else {
             disp.maintenance(snackInfo);
         }
@@ -65,20 +64,6 @@ public class VendingMachine {
             vm.returnMoney();
         } while (1 > 0);
         // I changed the maintenance calling so it will only be called if 10 if given when selecting a snack - Adam
-    }
-
-    /**
-     * @return the bank
-     */
-    public int getBank() {
-        return bank;
-    }
-
-    /**
-     * @param bank the bank to set
-     */
-    public void setBank(int newBank) {
-        bank = newBank;
     }
 
     /**

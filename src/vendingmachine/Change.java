@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author 341167922
+ * @author Adam and Henry
  */
 public class Change {
 
@@ -16,6 +16,7 @@ public class Change {
     private int change;  //amount of coin type in machine
     private int userChange;  //amount of coin type inserted by user
 
+    //create constructor
     public Change(String newDescription, double newValue, int newChange) {
         coinDescription = newDescription;
         coinValue = newValue;
