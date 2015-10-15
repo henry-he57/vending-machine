@@ -53,13 +53,20 @@ public class Change {
     public void remove(double amt){
         
     }
-    
-    public String toString(){
-        String description = coinDescription;
-        return description;
+    public double getCoinValue(){
+        return coinValue;
+    }
+    public String getCoinDescription(){
+        return coinDescription;
     }
     
     public void stockChange(Change c, int qty){
         c.change += qty;
+    }
+    public void setUserChange (int qty){
+        this.userChange = qty;
+    }
+    public int getUserChange (){
+        return userChange;
     }
 }

@@ -16,7 +16,8 @@ public class Snack {
     private int qty;
     private double realPrice;
     private int snacksSold;
-
+    Display disp = new Display();
+    
     public Snack(String newName, double newPrice, int startQty, double newRealPrice) {
         name = newName;
         price = newPrice;
@@ -89,7 +90,7 @@ public class Snack {
     /**
      * @param snacksSold the snacksSold to set
      */
-     public void increaseSnacksSold(){
+    public void increaseSnacksSold(){
         this.snacksSold ++;
     }
     /**
@@ -102,6 +103,7 @@ public class Snack {
     public void snackPurchased(Snack name, double money){
         if (name.price <= money){
             name.qty --;
+            disp.modUserChange(name.price);
         }else {
             System.out.println("Not enough dolla dolla bills y'all.");
         }
