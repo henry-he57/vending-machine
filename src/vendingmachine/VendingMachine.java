@@ -16,6 +16,13 @@ public class VendingMachine {
     private Snack[] snackInfo = new Snack[10];
     Display disp = new Display();
 
+    public void displaySnacks() {
+        for (int count = 0; count < 10; count++) {
+            System.out.print(count + ". ");
+            disp.displaySnack(snackInfo[count]);
+        }
+    }
+
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert(moneyIn);
@@ -24,13 +31,6 @@ public class VendingMachine {
 
     public void addNewSnack(int i, Snack s) {
         snackInfo[i] = s;
-    }
-
-    public void displaySnacks() {
-        for (int count = 0; count < 10; count++) {
-            System.out.print(count + ". ");
-            disp.displaySnack(snackInfo[count]);
-        }
     }
 
     public void getSelection() {
