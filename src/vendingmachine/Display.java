@@ -16,31 +16,31 @@ public class Display {
     Scanner kbScan = new Scanner(System.in);
     Change changeInfo[] = new Change[5];
 
-        /**
+     /**
      * declares all the snacks and sets them all to a spot in the 'name' array
      *
      * @param vm the vending machine that the snacks are all in
      */
     public void loadStartingSnacks(VendingMachine vm) {
-        Snack lays = new Snack("Lays", 2.00, 5);
+        Snack lays = new Snack("Lays", 2.00, 5, 0.10);
         vm.addNewSnack(0, lays);
-        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5);
+        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5, 0.10);
         vm.addNewSnack(1, doritos);
-        Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5);
+        Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5, 0.10);
         vm.addNewSnack(2, ruffles);
-        Snack marsBar = new Snack("Mars Bar", 1.50, 5);
+        Snack marsBar = new Snack("Mars Bar", 1.50, 5, 0.05);
         vm.addNewSnack(3, marsBar);
-        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5);
+        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5, 0.05);
         vm.addNewSnack(4, coffeeCrisp);
-        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5);
+        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5, 0.05);
         vm.addNewSnack(5, hersheys);
-        Snack mentos = new Snack("Mentos", 2.00, 5);
+        Snack mentos = new Snack("Mentos", 2.00, 5, 0.07);
         vm.addNewSnack(6, mentos);
-        Snack twizzlers = new Snack("Twizzlers", 1.50, 5);
+        Snack twizzlers = new Snack("Twizzlers", 1.50, 5, 0.07);
         vm.addNewSnack(7, twizzlers);
-        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5);
+        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5, 0.25);
         vm.addNewSnack(8, fuzzyPeaches);
-        Snack nerds = new Snack("Nerds", 3.00, 5);
+        Snack nerds = new Snack("Nerds", 3.00, 5, 0.30);
         vm.addNewSnack(9, nerds);
     }
     
@@ -96,21 +96,27 @@ public class Display {
             do {
                 System.out.println("Please enter the number associated with the desired snack.");
                 snackNumber = kbScan.nextInt();
-                if (s[snackNumber].getQty() == 0) {
+                if (snackNumber == 10){
+                    break;
+                } else if (s[snackNumber].getQty() == 0) {
                     System.out.println("Item not in stock. Please try again.");
                 }
             } while (s[snackNumber].getQty() == 0);
-
+            if(snackNumber == 10){
+                break;
+            }
             System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
-        } while (confirmation == 'n' || confirmation == 'N');   
-        
+        } while (confirmation == 'n' || confirmation == 'N');  
+        if (snackNumber != 10){
+            s[snackNumber].increaseSnacksSold();
+        }
         return snackNumber;
     }
 
     public void maintenance(Snack snackArray[]) {
         int selection = 0;
-        System.out.println("What would you like to do? 1 = 'empty change', 2 = 'restock' or 3 = 'add change'");
+        System.out.println("What would you like to do? 1 = 'empty change', 2 = 'restock', 3 = 'add change' or 4 = 'calculate profit'");
         selection = kbScan.nextInt();
         if (selection == 1){
             for (int count = 0; count < 5; count ++){
@@ -122,12 +128,30 @@ public class Display {
                 int qty = kbScan.nextInt();
                 snackArray[count].snackRestock(qty);
             }
-        }else {
+        }else if (selection == 30){
             for (int count = 0; count < 5; count ++){
                 System.out.println("How many " + changeInfo[count] + "s are you adding?");
                 int qty = kbScan.nextInt();
                 changeInfo[count].stockChange(changeInfo[count], qty);
             }
+        }else{
+            double proffit = 0;
+            for (int count = 0; count < 10; count ++){
+                proffit += (snackArray[count].getSnacksSold() * snackArray[count].getPrice())-(snackArray[count].getSnacksSold() * snackArray[count].getRealPrice());
+            }
+            System.out.println(proffit);
         }
+    }
+    public boolean isThatAll(){
+        boolean isThatAllBool;
+        char isThatAllChar;
+        System.out.println("Is that all? (Y/N): ");
+        isThatAllChar = kbScan.next().charAt(0);
+        if (isThatAllChar == 'n'|| isThatAllChar == 'N'){
+            isThatAllBool = false;
+        } else {
+            isThatAllBool = true;
+        }
+        return isThatAllBool;
     }
 }
