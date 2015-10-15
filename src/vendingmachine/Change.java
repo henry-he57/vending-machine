@@ -57,6 +57,7 @@ public class Change {
     public String getCoinDescription(){
         return coinDescription;
     }
+    
     public void stockChange(Change c, int qty){
         c.change += qty;
     }

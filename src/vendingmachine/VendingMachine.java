@@ -28,14 +28,6 @@ public class VendingMachine {
     public void insertMoney() {
         disp.loadCoins();
         moneyIn = disp.promptInsert(moneyIn);
-        moneyIn = Math.round(moneyIn * 100d) / 100d;
-        DecimalFormat a = new DecimalFormat ("#.00");
-        System.out.println("Your balance is: $" + a.format(moneyIn));
-
-    }
-
-    public void addNewSnack(int i, Snack s) {
-        snackInfo[i] = s;
     }
 
     public void getSelection() {
@@ -46,6 +38,10 @@ public class VendingMachine {
         } else {
             disp.maintenance(snackInfo);
         }
+    }
+            
+    public void addNewSnack(int i, Snack s) {
+        snackInfo[i] = s;
     }
 
     public void loadSnacks(VendingMachine vm) {
@@ -66,6 +62,7 @@ public class VendingMachine {
                 vm.insertMoney();
                 vm.getSelection();
             } while (vm.isThatAll() == false);
+            vm.returnMoney();
         } while (1 > 0);
         // I changed the maintenance calling so it will only be called if 10 if given when selecting a snack - Adam
     }
