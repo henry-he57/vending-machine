@@ -54,10 +54,11 @@ public class Change {
         
     }
     
-    public String toString(){
-        
-        return "thing";
+    public String toString(Change c){
+        String description = c.coinDescription;
+        return description;
     }
+    
     public void stockChange(Change c, int qty){
         c.change += qty;
     }
