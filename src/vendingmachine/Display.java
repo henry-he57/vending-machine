@@ -123,17 +123,6 @@ public class Display {
         return snackNumber;
     }
 
-    public void modUserChange(double price) {
-        double a;
-        int b;
-        for (int count = 0; count < 5; count++) {
-            a = price / changeInfo[count].getCoinValue();
-            b = (int) a;
-            changeInfo[count].remove(b);
-            System.out.println(changeInfo[count].getUserChange());
-        }
-    }
-
     public void maintenance(Snack snackArray[]) {
         int selection = 0;
         System.out.println("What would you like to do? 1 = 'Empty Change', 2 = 'Restock', 3 = 'Add Change' or 4 = 'Calculate Profit'");
@@ -178,15 +167,17 @@ public class Display {
 
     public void returnMoney(double moneyIn) {
         int a;
-        double b;
         for (int count = 0; count < 5; count++) {
-            b = moneyIn / changeInfo[count].getCoinValue();
-            a = (int) b;
-            if (a > 0) {
-                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "(s) back");
+            a = 0;
+            while (changeInfo[count].getCoinValue() <= moneyIn) {
+                moneyIn -= changeInfo[count].getCoinValue();
+                a++;
             }
-            b = a * changeInfo[count].getCoinValue();
-            moneyIn -= b;
+            if (a > 1) {
+                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
+            } else if (a == 1) {
+                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
+            }
         }
     }
 }

@@ -5,8 +5,6 @@
  */
 package vendingmachine;
 
-import java.text.DecimalFormat;
-
 /**
  *
  * @author 341167922
