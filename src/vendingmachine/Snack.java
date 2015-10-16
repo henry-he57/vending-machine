@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author Adam
+ * @author Adam Morrison and Henry He
  */
 public class Snack {
 
@@ -17,6 +17,7 @@ public class Snack {
     private double realPrice;   //cost of actual snack production
     private int snacksSold; //number of snacks sold in machine
     
+    //create snack object constructor
     public Snack(String newName, double newPrice, int startQty, double newRealPrice) {
         name = newName;
         price = newPrice;
@@ -31,7 +32,7 @@ public class Snack {
      * @param a the quantity added
      */
     public void snackRestock(int a) {
-        setQty(+a);
+        qty += a;
     }
 
     /**
@@ -97,11 +98,12 @@ public class Snack {
      */
     public void setQty(int qty) {
         this.qty = qty;
-    }
+    }  
     
     public boolean snackPurchased(Snack name, double money){
         if (name.price <= money){
             name.qty --;
+            System.out.println("Enjoy your " + name.name + "!");
             return true;
         }else {
             System.out.println("Not enough dolla dolla bills y'all.");

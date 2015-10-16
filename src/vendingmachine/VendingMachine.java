@@ -7,13 +7,32 @@ package vendingmachine;
 
 /**
  *
- * @author 341167922
+ * @author Adam Morrison and Henry He
  */
 public class VendingMachine {
 
-    private double moneyIn;
-    private Snack[] snackInfo = new Snack[10];
-    Display disp = new Display();
+    private double moneyIn; //amount of money input by user
+    private Snack[] snackInfo = new Snack[10];  //array for snack objects
+    Display disp = new Display();   //display of vending machine (pretty much LED LIGHTS AND PLEXIGLASS)
+
+    /**
+     * Calls method in display to load snacks into vending machine
+     *
+     * @param vm The vending machine to load the snacks into
+     */
+    public void loadSnacks(VendingMachine vm) {
+        disp.loadStartingSnacks(vm);
+    }
+
+    /**
+     * Puts given snack into snack object array
+     * 
+     * @param arrayLocation Location of snack object in array
+     * @param snack The snack object to put into array
+     */
+    public void addNewSnack(int arrayLocation, Snack snack) {
+        snackInfo[arrayLocation] = snack;
+    }
 
     public void displaySnacks() {
         for (int count = 0; count < 10; count++) {
@@ -39,22 +58,14 @@ public class VendingMachine {
         }
     }
 
-    public void addNewSnack(int i, Snack s) {
-        snackInfo[i] = s;
-    }
-
-    public void loadSnacks(VendingMachine vm) {
-        disp.loadStartingSnacks(vm);
-    }
-
     /**
      *
      * @param args
      */
     public static void main(String[] args) {
-        VendingMachine vm = new VendingMachine();
+        VendingMachine vm = new VendingMachine();   //create new vending machine
 
-        vm.loadSnacks(vm);
+        vm.loadSnacks(vm);  //loads snack objects into vending machine vm
         do {
             do {
                 vm.displaySnacks();
