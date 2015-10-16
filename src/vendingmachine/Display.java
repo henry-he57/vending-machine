@@ -14,40 +14,44 @@ import java.util.*;
  */
 public class Display {
 
-    Scanner kbScan = new Scanner(System.in);
-    Change changeInfo[] = new Change[5];
-    DecimalFormat df = new DecimalFormat("#.00");
+    Scanner kbScan = new Scanner(System.in);    //scanner for user input
+    Change changeInfo[] = new Change[5];    //array for change objects
+    DecimalFormat df = new DecimalFormat("0.00");   //object to round price values
 
     /**
-     * declares all the snacks and sets them all to a spot in the 'name' array
+     * Declares all snacks and and places them in snack array for vending
+     * machine
      *
-     * @param vm the vending machine that the snacks are all in
+     * @param vm The vending machine to load the snacks into
      */
     public void loadStartingSnacks(VendingMachine vm) {
+        //create snack objects
         Snack lays = new Snack("Lays", 2.00, 5, 0.10);
-        vm.addNewSnack(0, lays);
         Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5, 0.10);
-        vm.addNewSnack(1, doritos);
         Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5, 0.10);
-        vm.addNewSnack(2, ruffles);
         Snack marsBar = new Snack("Mars Bar", 1.50, 5, 0.05);
-        vm.addNewSnack(3, marsBar);
         Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5, 0.05);
-        vm.addNewSnack(4, coffeeCrisp);
         Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5, 0.05);
-        vm.addNewSnack(5, hersheys);
         Snack mentos = new Snack("Mentos", 2.00, 5, 0.07);
-        vm.addNewSnack(6, mentos);
         Snack twizzlers = new Snack("Twizzlers", 1.50, 5, 0.07);
-        vm.addNewSnack(7, twizzlers);
         Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5, 0.25);
-        vm.addNewSnack(8, fuzzyPeaches);
         Snack nerds = new Snack("Nerds", 3.00, 5, 0.30);
+
+        //load snack objects into snack array
+        vm.addNewSnack(0, lays);
+        vm.addNewSnack(1, doritos);
+        vm.addNewSnack(2, ruffles);
+        vm.addNewSnack(3, marsBar);
+        vm.addNewSnack(4, coffeeCrisp);
+        vm.addNewSnack(5, hersheys);
+        vm.addNewSnack(6, mentos);
+        vm.addNewSnack(7, twizzlers);
+        vm.addNewSnack(8, fuzzyPeaches);
         vm.addNewSnack(9, nerds);
     }
 
     public void displaySnack(Snack a) {
-        System.out.println(a.getName() + "  Price: $" + a.getPrice() + "  Amount Available: " + a.getQty());
+        System.out.println(a.getName() + "  Price: $" + df.format(a.getPrice()) + "  Amount Available: " + a.getQty());
     }
 
     public void addNewCoin(int i, Change s) {
@@ -59,7 +63,7 @@ public class Display {
         addNewCoin(0, toonie);
         Change loonie = new Change("Loonie", 1.00, 10);
         addNewCoin(1, loonie);
-        Change quarter = new Change("Quarter", 0.25, 10);
+        Change quarter = new Change("Quarter", 0.25, 0);
         addNewCoin(2, quarter);
         Change dime = new Change("Dime", 0.10, 10);
         addNewCoin(3, dime);
@@ -167,17 +171,24 @@ public class Display {
 
     public void returnMoney(double moneyIn) {
         int a;
+        System.out.println("Returning your change: $" + df.format(moneyIn) + ".");
         for (int count = 0; count < 5; count++) {
             a = 0;
-            while (changeInfo[count].getCoinValue() <= moneyIn) {
-                moneyIn -= changeInfo[count].getCoinValue();
-                a++;
+            if (changeInfo[count].getChange() > 0) {
+                while (changeInfo[count].getCoinValue() <= moneyIn) {
+                    moneyIn -= changeInfo[count].getCoinValue();
+                    a++;
+                }
+                if (a > 1) {
+                    System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
+                } else if (a == 1) {
+                    System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
+                }
             }
-            if (a > 1) {
-                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
-            } else if (a == 1) {
-                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
-            }
+        }
+        if (moneyIn > 0){
+            System.out.println(moneyIn);
+            System.out.println("Sorry, the machine is out of coins. Ayyy lmao");
         }
     }
 }

@@ -70,4 +70,11 @@ public class Change {
     public int getUserChange (){
         return userChange;
     }
+
+    /**
+     * @return the change
+     */
+    public int getChange() {
+        return change;
+    }
 }
