@@ -36,7 +36,7 @@ public class VendingMachine {
     }
 
     /**
-     * Displays all available snacks
+     * Displays all available snacks in machine
      */
     public void displaySnacks() {
         for (int count = 0; count < 10; count++) {
@@ -45,6 +45,10 @@ public class VendingMachine {
         }
     }
 
+    
+    /**
+     * Calls display method to ask user for money insertion
+     */
     public void insertMoney() {
         moneyIn = disp.promptInsert(moneyIn);
     }
@@ -67,12 +71,12 @@ public class VendingMachine {
      */
     public static void main(String[] args) {
         VendingMachine vm = new VendingMachine();   //create new vending machine
-
-        vm.loadAssets(vm);  //loads snack and coin objects into vending machine vm
+        vm.loadAssets(vm);  //load snack and coin objects into vending machine vm
+        
         do {
             do {
-                vm.displaySnacks();
-                vm.insertMoney();
+                vm.displaySnacks(); //show user all snacks available for purchase
+                vm.insertMoney();   //prompt user to insert money 
                 vm.getSelection();
             } while (vm.isThatAll() == false);
             vm.returnMoney();

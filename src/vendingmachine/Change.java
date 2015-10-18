@@ -16,7 +16,7 @@ public class Change {
     private int change;  //amount of coin type in machine
     private int userChange;  //amount of coin type inserted by user
 
-    //create constructor
+    //create constructor to set Change properties
     public Change(String newDescription, double newValue, int newChange) {
         coinDescription = newDescription;
         coinValue = newValue;
@@ -24,15 +24,25 @@ public class Change {
         userChange = 0;
     }
 
+    /**
+     * Sets the amount of coin the user has inserted
+     * 
+     * @param qty Amount of coin
+     */
+    public void setUserCoin(int qty) {
+        userChange = qty;
+    }
+    
+    /**
+     * 
+     * @param c
+     * @return 
+     */
     public double add(Change c) {
         double changeValue = 0;
         changeValue += c.coinValue * c.userChange;
         
         return changeValue;
-    }
-
-    public void addUserCoin(int qty) {
-        userChange = qty;
     }
 
     public void add() {

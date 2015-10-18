@@ -55,12 +55,12 @@ public class Display {
      */
     public void loadCoins() {
         //create change objects
-        Change toonie = new Change("Toonie", 2.00, 10);     
-        Change loonie = new Change("Loonie", 1.00, 10);      
-        Change quarter = new Change("Quarter", 0.25, 10);     
-        Change dime = new Change("Dime", 0.10, 10);        
-        Change nickel = new Change("Nickel", 0.05, 10);   
-        
+        Change toonie = new Change("Toonie", 2.00, 10);
+        Change loonie = new Change("Loonie", 1.00, 10);
+        Change quarter = new Change("Quarter", 0.25, 10);
+        Change dime = new Change("Dime", 0.10, 10);
+        Change nickel = new Change("Nickel", 0.05, 10);
+
         //load change objects into change array
         addNewCoin(0, toonie);
         addNewCoin(1, loonie);
@@ -71,7 +71,7 @@ public class Display {
 
     /**
      * Puts given change into change object array
-     * 
+     *
      * @param arrayLocation Location of change object in array
      * @param change The change object to put into array
      */
@@ -79,30 +79,41 @@ public class Display {
         changeInfo[arrayLocation] = change;
     }
 
-    public void displaySnack(Snack a) {
-        System.out.println(a.getName() + "  Price: $" + df.format(a.getPrice()) + "  Amount Available: " + a.getQty());
+    /**
+     * Displays given snack name, price, and amount
+     *
+     * @param snack The snack object to display information about
+     */
+    public void displaySnack(Snack snack) {
+        System.out.println(snack.getName() + "  Price: $" + df.format(snack.getPrice()) + "  Amount Available: " + snack.getQty());
     }
 
+    /**
+     * Asks user for amount of each coin and calculates money total
+     * 
+     * @param moneyIn The current user's money in machine
+     * @return 
+     */
     public double promptInsert(double moneyIn) {
         System.out.println("Please input number of toonies");
         int toonieAmount = kbScan.nextInt();
-        changeInfo[0].addUserCoin(toonieAmount);
+        changeInfo[0].setUserCoin(toonieAmount);
         changeInfo[0].add(toonieAmount);
         System.out.println("Please input number of loonies");
         int loonieAmount = kbScan.nextInt();
-        changeInfo[1].addUserCoin(loonieAmount);
+        changeInfo[1].setUserCoin(loonieAmount);
         changeInfo[1].add(loonieAmount);
         System.out.println("Please input number of quarters");
         int quarterAmount = kbScan.nextInt();
-        changeInfo[2].addUserCoin(quarterAmount);
+        changeInfo[2].setUserCoin(quarterAmount);
         changeInfo[2].add(quarterAmount);
         System.out.println("Please input number of dimes");
         int dimeAmount = kbScan.nextInt();
-        changeInfo[3].addUserCoin(dimeAmount);
+        changeInfo[3].setUserCoin(dimeAmount);
         changeInfo[3].add(dimeAmount);
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
-        changeInfo[4].addUserCoin(nickelAmount);
+        changeInfo[4].setUserCoin(nickelAmount);
         changeInfo[4].add(nickelAmount);
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
