@@ -48,7 +48,7 @@ public class Change {
     }
 
     public void remove(int qty) {
-        userChange -= qty;
+        change -= qty;
     }
     
     public void remove(double amt){
