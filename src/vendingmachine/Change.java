@@ -43,8 +43,8 @@ public class Change {
         change += qty;
     }
 
-    public void empty() {
-        change = 0;
+    public void empty(Change c) {
+        c.change = 0;
     }
 
     public void remove(int qty) {

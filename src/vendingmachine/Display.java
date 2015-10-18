@@ -63,7 +63,7 @@ public class Display {
         addNewCoin(0, toonie);
         Change loonie = new Change("Loonie", 1.00, 10);
         addNewCoin(1, loonie);
-        Change quarter = new Change("Quarter", 0.25, 0);
+        Change quarter = new Change("Quarter", 0.25, 10);
         addNewCoin(2, quarter);
         Change dime = new Change("Dime", 0.10, 10);
         addNewCoin(3, dime);
@@ -118,6 +118,11 @@ public class Display {
             if (snackNumber == 10) {
                 break;
             }
+            System.out.println("Do you want to see the snack information for " + s[snackNumber].getName() + "? (y/n)");
+            confirmation = kbScan.next().charAt(0);
+            if (confirmation == 'y' || confirmation == 'Y'){
+                System.out.println(s[snackNumber].getSnackDescription());
+            }
             System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
         } while (confirmation == 'n' || confirmation == 'N');
@@ -133,8 +138,9 @@ public class Display {
         selection = kbScan.nextInt();
         if (selection == 1) {
             for (int count = 0; count < 5; count++) {
-                changeInfo[count].empty();
+                changeInfo[count].empty(changeInfo[count]);
             }
+            System.out.println("Change emptied.");
         } else if (selection == 2) {
             for (int count = 0; count < 10; count++) {
                 System.out.println("How many " + snackArray[count].getName() + "s are you adding?");
@@ -174,21 +180,21 @@ public class Display {
         System.out.println("Returning your change: $" + df.format(moneyIn) + ".");
         for (int count = 0; count < 5; count++) {
             a = 0;
-            if (changeInfo[count].getChange() > 0) {
-                while (changeInfo[count].getCoinValue() <= moneyIn) {
-                    moneyIn -= changeInfo[count].getCoinValue();
-                    a++;
-                }
-                if (a > 1) {
-                    System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
-                } else if (a == 1) {
-                    System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
-                }
+            while (changeInfo[count].getCoinValue() <= moneyIn && changeInfo[count].getChange() > 0) {
+                moneyIn -= changeInfo[count].getCoinValue();
+                changeInfo[count].remove(1);
+                a++;
+            }
+            if (a > 1) {
+                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
+            } else if (a == 1) {
+                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
             }
         }
-        if (moneyIn > 0){
-            System.out.println(moneyIn);
+
+        if (moneyIn > 0.5) {
             System.out.println("Sorry, the machine is out of coins. Ayyy lmao");
         }
+
     }
 }

@@ -16,12 +16,13 @@ public class VendingMachine {
     Display disp = new Display();   //display of vending machine (pretty much LED LIGHTS AND PLEXIGLASS)
 
     /**
-     * Calls method in display to load snacks into vending machine
+     * Calls method in display to load assets such as snacks and coins into vending machine
      *
-     * @param vm The vending machine to load the snacks into
+     * @param vm The vending machine to load the snacks and coins into
      */
-    public void loadSnacks(VendingMachine vm) {
+    public void loadAssets(VendingMachine vm) {
         disp.loadStartingSnacks(vm);
+        disp.loadCoins();
     }
 
     /**
@@ -42,7 +43,6 @@ public class VendingMachine {
     }
 
     public void insertMoney() {
-        disp.loadCoins();
         moneyIn = disp.promptInsert(moneyIn);
     }
 
@@ -65,7 +65,7 @@ public class VendingMachine {
     public static void main(String[] args) {
         VendingMachine vm = new VendingMachine();   //create new vending machine
 
-        vm.loadSnacks(vm);  //loads snack objects into vending machine vm
+        vm.loadAssets(vm);  //loads snack and coin objects into vending machine vm
         do {
             do {
                 vm.displaySnacks();
@@ -98,5 +98,6 @@ public class VendingMachine {
 
     public void returnMoney() {
         disp.returnMoney(moneyIn);
+        moneyIn = 0;
     }
 }
