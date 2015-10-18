@@ -26,16 +26,16 @@ public class Display {
      */
     public void loadStartingSnacks(VendingMachine vm) {
         //create snack objects
-        Snack lays = new Snack("Lays", 2.00, 5, 0.10);
-        Snack doritos = new Snack("Doritos - Sweet Chili Heat", 2.00, 5, 0.10);
-        Snack ruffles = new Snack("Ruffles All Dressed", 2.00, 5, 0.10);
-        Snack marsBar = new Snack("Mars Bar", 1.50, 5, 0.05);
-        Snack coffeeCrisp = new Snack("Coffee Crisp", 1.50, 5, 0.05);
-        Snack hersheys = new Snack("Hershey's Chocolate", 1.50, 5, 0.05);
-        Snack mentos = new Snack("Mentos", 2.00, 5, 0.07);
-        Snack twizzlers = new Snack("Twizzlers", 1.50, 5, 0.07);
-        Snack fuzzyPeaches = new Snack("Fuzzy Peaches", 2.50, 5, 0.25);
-        Snack nerds = new Snack("Nerds", 3.00, 5, 0.30);
+        Snack lays = new Snack("Lays","Chips, 400 calories, 100g sodium(per chip)",2.00, 5, 0.10);
+        Snack doritos = new Snack("Doritos - Sweet Chili Heat","Chips, 405 colories, 60g solduim",2.00, 5, 0.10);
+        Snack ruffles = new Snack("Ruffles All Dressed","Chips, 350 colories, 75g sodium, 'so wavy'",2.00, 5, 0.10);
+        Snack marsBar = new Snack("Mars Bar","Candy bar, 250 calories, 50g sodium",1.50, 5, 0.05);
+        Snack coffeeCrisp = new Snack("Coffee Crisp","Candy bar, 275 calories, 50g sodium",1.50, 5, 0.05);
+        Snack hersheys = new Snack("Hershey's Chocolate","Candy bar, 300 colories, 60g sodium",1.50, 5, 0.05);
+        Snack mentos = new Snack("Mentos","Candy pieces, 250 calories, 50g sodium",2.00, 5, 0.07);
+        Snack twizzlers = new Snack("Twizzlers","Candy pieces, 200 calories, 50g sodium",1.50, 5, 0.07);
+        Snack fuzzyPeaches = new Snack("Fuzzy Peaches","Candy pieces, 300 calories, 75g sodium",2.50, 5, 0.25);
+        Snack nerds = new Snack("Nerds","God candy, 0 calories, 0g sodium, '3 good 5 me'",3.00, 5, 0.30);
 
         //load snack objects into snack array
         vm.addNewSnack(0, lays);
@@ -112,7 +112,7 @@ public class Display {
                 if (snackNumber == 10) {
                     break;
                 } else if (s[snackNumber].getQty() == 0) {
-                    System.out.println("Item not in stock. Please try again.");
+                    System.out.println("Item not in stock. Please another snack.");
                 }
             } while (s[snackNumber].getQty() == 0);
             if (snackNumber == 10) {
@@ -187,7 +187,6 @@ public class Display {
             }
         }
         if (moneyIn > 0){
-            System.out.println(moneyIn);
             System.out.println("Sorry, the machine is out of coins. Ayyy lmao");
         }
     }
