@@ -12,14 +12,16 @@ package vendingmachine;
 public class Snack {
 
     private String name;    //name of snack
+    private String snackDescription;     //descrition of snack
     private Double price;   //price of snack in machine
     private int qty;    //amount of snack in machine
     private double realPrice;   //cost of actual snack production
     private int snacksSold; //number of snacks sold in machine
     
     //create snack object constructor
-    public Snack(String newName, double newPrice, int startQty, double newRealPrice) {
+    public Snack(String newName, String newSnackDescription,double newPrice, int startQty, double newRealPrice) {
         name = newName;
+        snackDescription = newSnackDescription;
         price = newPrice;
         qty = startQty;
         realPrice = newRealPrice;
@@ -109,5 +111,12 @@ public class Snack {
             System.out.println("Not enough dolla dolla bills y'all.");
             return false;
         }
+    }
+
+    /**
+     * @return the snackDescription
+     */
+    public String getSnackDescription() {
+        return snackDescription;
     }
 }
