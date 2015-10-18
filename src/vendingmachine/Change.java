@@ -7,7 +7,7 @@ package vendingmachine;
 
 /**
  *
- * @author Adam and Henry
+ * @author Adam Morrison and Henry He
  */
 public class Change {
 

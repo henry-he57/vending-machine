@@ -35,6 +35,9 @@ public class VendingMachine {
         snackInfo[arrayLocation] = snack;
     }
 
+    /**
+     * Displays all available snacks
+     */
     public void displaySnacks() {
         for (int count = 0; count < 10; count++) {
             System.out.print(count + ". ");
