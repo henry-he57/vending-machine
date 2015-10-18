@@ -133,7 +133,7 @@ public class Display {
     }
 
     public void maintenance(Snack snackArray[]) {
-        int selection = 0;
+        int selection;
         System.out.println("What would you like to do? 1 = 'Empty Change', 2 = 'Restock', 3 = 'Add Change' or 4 = 'Calculate Profit'");
         selection = kbScan.nextInt();
         if (selection == 1) {
@@ -177,7 +177,7 @@ public class Display {
 
     public void returnMoney(double moneyIn) {
         int a;
-        System.out.println("Returning your change: $" + df.format(moneyIn) + ".");
+        System.out.println("Returning your change: $" + df.format(moneyIn));
         for (int count = 0; count < 5; count++) {
             a = 0;
             while (changeInfo[count].getCoinValue() <= moneyIn && changeInfo[count].getChange() > 0) {
