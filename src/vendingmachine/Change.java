@@ -34,6 +34,15 @@ public class Change {
     }
     
     /**
+     * Adds specified number of coins to machine storage
+     * 
+     * @param qty The amount of coins to add to the machine
+     */
+    public void add(int qty) {
+        change += qty;
+    }
+    
+    /*
      * 
      * @param c
      * @return 
@@ -49,9 +58,7 @@ public class Change {
        change++;
     }
 
-    public void add(int qty) {
-        change += qty;
-    }
+    
 
     public void empty(Change c) {
         c.change = 0;

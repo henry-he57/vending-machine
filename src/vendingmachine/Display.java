@@ -96,25 +96,31 @@ public class Display {
      */
     public double promptInsert(double moneyIn) {
         System.out.println("Please input number of toonies");
-        int toonieAmount = kbScan.nextInt();
-        changeInfo[0].setUserCoin(toonieAmount);
-        changeInfo[0].add(toonieAmount);
+        int toonieAmount = kbScan.nextInt();            
         System.out.println("Please input number of loonies");
-        int loonieAmount = kbScan.nextInt();
-        changeInfo[1].setUserCoin(loonieAmount);
-        changeInfo[1].add(loonieAmount);
+        int loonieAmount = kbScan.nextInt();                
         System.out.println("Please input number of quarters");
-        int quarterAmount = kbScan.nextInt();
-        changeInfo[2].setUserCoin(quarterAmount);
-        changeInfo[2].add(quarterAmount);
+        int quarterAmount = kbScan.nextInt();               
         System.out.println("Please input number of dimes");
-        int dimeAmount = kbScan.nextInt();
-        changeInfo[3].setUserCoin(dimeAmount);
-        changeInfo[3].add(dimeAmount);
+        int dimeAmount = kbScan.nextInt();      
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
+        
+        //set amount of coins put in by user
+        changeInfo[0].setUserCoin(toonieAmount);  
+        changeInfo[1].setUserCoin(loonieAmount);
+        changeInfo[2].setUserCoin(quarterAmount);
+        changeInfo[3].setUserCoin(dimeAmount);
         changeInfo[4].setUserCoin(nickelAmount);
+        
+        //add the coins given by the user to the machine
+        changeInfo[0].add(toonieAmount); 
+        changeInfo[1].add(loonieAmount);
+        changeInfo[2].add(quarterAmount);
+        changeInfo[3].add(dimeAmount);
         changeInfo[4].add(nickelAmount);
+        
+        
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
         }
