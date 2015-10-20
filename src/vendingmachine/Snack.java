@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vendingmachine;
 
 /**
@@ -12,13 +7,13 @@ package vendingmachine;
 public class Snack {
 
     private String name;    //name of snack
-    private String snackDescription;     //descrition of snack
+    private String snackDescription;     //description of snack
     private Double price;   //price of snack in machine
     private int qty;    //amount of snack in machine
     private double realPrice;   //cost of actual snack production
     private int snacksSold; //number of snacks sold in machine
 
-    //create snack object constructor
+    //create snack object constructor (Author: Henry)
     public Snack(String newName, String newSnackDescription, double newPrice, int startQty, double newRealPrice) {
         name = newName;
         snackDescription = newSnackDescription;
@@ -29,7 +24,8 @@ public class Snack {
     }
 
     /**
-     * increases the quantity of snack by the amount specified
+     * Author: Henry
+     * Increases the quantity of snack by the amount specified
      *
      * @param a the quantity added
      */
@@ -38,15 +34,20 @@ public class Snack {
     }
 
     /**
-     * Checks to see if user has enough money to buy the snack
+     * Author: Henry
+     * Checks to see if user has enough money to buy the snack and changes snack amount values accordingly
      * 
      * @param snack The desired snack of user  
      * @param money Current user balance in machine
-     * @return whether or not the user has enough money to buy the snack
+     * @return if the user has enough money to buy the snack
      */
     public boolean snackPurchased(Snack snack, double money) {
         if (snack.price <= money) {
+            
+            //decrease snack amount by one and increase the snack sold amount by one
             snack.qty--;
+            snack.snacksSold++;
+            
             System.out.println("Enjoy your " + snack.name + "!");
             return true;
         } else {
@@ -88,13 +89,6 @@ public class Snack {
      */
     public int getSnacksSold() {
         return snacksSold;
-    }
-
-    /**
-     * Increase the snack sold amount of a snack by one
-     */
-    public void increaseSnacksSold() {
-        snacksSold++;
     }
 
     /**

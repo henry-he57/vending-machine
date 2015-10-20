@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vendingmachine;
 
 /**
@@ -16,7 +11,7 @@ public class Change {
     private int change;  //amount of coin type in machine
     private int userChange;  //amount of coin type inserted by user
 
-    //create constructor to set Change properties
+    //create constructor to set Change properties (Author: Henry)
     public Change(String newDescription, double newValue, int newChange) {
         coinDescription = newDescription;
         coinValue = newValue;
@@ -25,6 +20,7 @@ public class Change {
     }
 
     /**
+     * Author: Henry
      * Sets the amount of coin the user has inserted
      * 
      * @param qty Amount of coin
@@ -34,6 +30,7 @@ public class Change {
     }
     
     /**
+     * Author: Henry
      * Adds specified number of coins to machine storage
      * 
      * @param qty The amount of coins to add to the machine
@@ -43,6 +40,7 @@ public class Change {
     }
 
     /**
+     * Author: Adam
      * Calculates total value of user inserted change for one coin
      * 
      * @param change The coin object to calculate balance for
@@ -54,38 +52,51 @@ public class Change {
         return changeValue;
     }
 
-    public void add() {
-       change++;
-    }
-
-    
-
+    /**
+     * Author: Henry
+     * Empties a specific change object from the machine
+     * 
+     * @param c The change object to empty
+     */
     public void empty(Change c) {
         c.change = 0;
     }
 
+    /**
+     * Author: Henry
+     * Removes a specified number of specific coin from machine
+     * 
+     * @param qty The amount of coins to remove from machine
+     */
     public void remove(int qty) {
         change -= qty;
     }
     
-    public void remove(double amt){
-        
-    }
+    /**
+     * 
+     * @return the value of the coin
+     */
     public double getCoinValue(){
         return coinValue;
     }
+    
+    /**
+     * 
+     * @return the name of the coin
+     */
     public String getCoinDescription(){
         return coinDescription;
     }
     
+    /**
+     * Author: Henry
+     * Refills change object in machine
+     * 
+     * @param c The change object to stock
+     * @param qty The amount of coins to add to machine storage
+     */
     public void stockChange(Change c, int qty){
         c.change += qty;
-    }
-    public void setUserChange (int qty){
-        this.userChange = qty;
-    }
-    public int getUserChange (){
-        return userChange;
     }
 
     /**

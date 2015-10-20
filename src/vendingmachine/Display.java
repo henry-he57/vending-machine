@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vendingmachine;
 
 import java.text.DecimalFormat;
@@ -19,6 +14,7 @@ public class Display {
     DecimalFormat df = new DecimalFormat("0.00");   //object to round price values
 
     /**
+     * Author: Adam
      * Declares all snacks and and places them in snack array for vending
      * machine
      *
@@ -29,7 +25,7 @@ public class Display {
         Snack lays = new Snack("Lays", "Chips, 400 Calories, 100g Sodium(per chip)", 2.00, 5, 0.10);
         Snack doritos = new Snack("Doritos - Sweet Chili Heat", "Chips, 405 Calories, 60g Sodium", 2.00, 5, 0.10);
         Snack ruffles = new Snack("Ruffles All Dressed", "Chips, 350 Calories, 75g Sodium, 'so wavy'", 2.00, 5, 0.10);
-        Snack marsBar = new Snack("Mars Bar", "Candy Bar, 250 Calories, 50g Sodium", 1.50, 5, 0.05);
+        Snack marsBar = new Snack("Reese's Crispy Crunchy Bar", "Candy Bar, 250 Calories, 50g Sodium", 1.50, 5, 0.05);
         Snack coffeeCrisp = new Snack("Coffee Crisp", "Candy Bar, 275 Calories, 50g Sodium", 1.50, 5, 0.05);
         Snack hersheys = new Snack("Hershey's Chocolate", "Candy Bar, 300 Calories, 60g Sodium", 1.50, 5, 0.05);
         Snack mentos = new Snack("Mentos", "Candy Pieces, 250 Calories, 50g Sodium", 2.00, 5, 0.07);
@@ -51,6 +47,7 @@ public class Display {
     }
 
     /**
+     * Author: Henry
      * Declares all coins and places them in change array
      */
     public void loadCoins() {
@@ -70,6 +67,7 @@ public class Display {
     }
 
     /**
+     * Author: Adam
      * Puts given change into change object array
      *
      * @param arrayLocation Location of change object in array
@@ -80,15 +78,25 @@ public class Display {
     }
 
     /**
+     * Author: Henry
      * Displays given snack name, price, and amount
      *
      * @param snack The snack object to display information about
+     * @param arrayLocation The location of the snack object in the array
+     * @param moneyIn The amount of money inserted by the user
      */
-    public void displaySnack(Snack snack) {
-        System.out.println(snack.getName() + "  Price: $" + df.format(snack.getPrice()) + "  Amount Available: " + snack.getQty());
+    public void displaySnack(Snack snack, int arrayLocation, double moneyIn) {
+
+        //print current balance before listing snacks
+        if (arrayLocation == 0) {
+            System.out.println("Current Balance: $" + df.format(moneyIn));
+        }
+
+        System.out.println(arrayLocation + ". " + snack.getName() + "  Price: $" + df.format(snack.getPrice()) + "  Amount Available: " + snack.getQty());
     }
 
     /**
+     * Author: Henry and Adam for Rounding
      * Asks user for amount of each coin and calculates money total
      *
      * @param moneyIn The current user's money in machine
@@ -131,6 +139,7 @@ public class Display {
     }
 
     /**
+     * Author: Henry
      * Asks user for desired snack, checks if snack is in stock, and displays
      * snack information
      *
@@ -150,8 +159,8 @@ public class Display {
                 //exit loop for maintenance when instructed by user
                 if (snackNumber == 10) {
                     break;
-                    
-                //print error message when the snack runs out of stock
+
+                    //print error message when the snack runs out of stock
                 } else if (snack[snackNumber].getQty() == 0) {
                     System.out.println("Item not in stock. Please another snack.");
                 }
@@ -168,80 +177,117 @@ public class Display {
             if (confirmation == 'y' || confirmation == 'Y') {
                 System.out.println(snack[snackNumber].getSnackDescription());
             }
-            
-            System.out.println("Do you want a " + snack[snackNumber].getName() + "? (y/n)");
+
+            System.out.println("Do you want " + snack[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
         } while (confirmation == 'n' || confirmation == 'N');
-        
-        //increase snack sold number by one for desired snack
-        if (snackNumber != 10) {
-            snack[snackNumber].increaseSnacksSold();
-        }
-        
+
         return snackNumber;
     }
 
-    public void maintenance(Snack snackArray[]) {
-        int selection;
-        System.out.println("What would you like to do? 1 = 'Empty Change', 2 = 'Restock', 3 = 'Add Change' or 4 = 'Calculate Profit'");
+    /**
+     * Author: Adam
+     * Opens maintenance menu for change emptying/refilling, snack restocking,
+     * profit calculation, and machine shutdown
+     *
+     * @param snackArray The array holding all available snacks
+     */
+    public boolean maintenance(Snack snackArray[]) {
+        int selection;  //user decisions
+        System.out.println("What would you like to do? 1 = 'Empty Change', 2 = 'Restock Snacks', 3 = 'Add Change', 4 = 'Calculate Profit', or 5 = 'Shut Down Machine'");
         selection = kbScan.nextInt();
+
+        //empty all change from machine
         if (selection == 1) {
             for (int count = 0; count < 5; count++) {
                 changeInfo[count].empty(changeInfo[count]);
             }
             System.out.println("Change emptied.");
-        } else if (selection == 2) {
+
+        } //restock snacks into machine
+        else if (selection == 2) {
             for (int count = 0; count < 10; count++) {
                 System.out.println("How many " + snackArray[count].getName() + "s are you adding?");
                 int qty = kbScan.nextInt();
-                snackArray[count].snackRestock(qty);
+                snackArray[count].snackRestock(qty);    //restock snack object with the given amount
             }
-        } else if (selection == 3) {
+
+        } //refill change in machine
+        else if (selection == 3) {
             for (int count = 0; count < 5; count++) {
                 System.out.println("How many " + changeInfo[count] + "s are you adding?");
                 int qty = kbScan.nextInt();
                 changeInfo[count].stockChange(changeInfo[count], qty);
             }
-        } else {
+
+        } //show current profit
+        else if (selection == 4) {
             double profit = 0;
             for (int count = 0; count < 10; count++) {
+
+                //multiply snacks sold by factory production cost and sale price and subtract production cost from sale price
                 profit += (snackArray[count].getSnacksSold() * snackArray[count].getPrice()) - (snackArray[count].getSnacksSold() * snackArray[count].getRealPrice());
+
             }
             System.out.println(profit);
+        } //end program and shut down machine
+        else {
+            return true;
         }
+        return false;
     }
 
+    /**
+     * Author: Adam
+     * Asks user if they have finished with the vending machine
+     *
+     * @return if the user is finished using the machine
+     */
     public boolean isThatAll() {
-        boolean isThatAllBool;
-        char isThatAllChar;
+        boolean finished;
+        char confirmation;  //user decision
         System.out.println("Is that all? (Y/N): ");
-        isThatAllChar = kbScan.next().charAt(0);
-        if (isThatAllChar == 'n' || isThatAllChar == 'N') {
-            isThatAllBool = false;
+        confirmation = kbScan.next().charAt(0);
+        if (confirmation == 'n' || confirmation == 'N') {
+            finished = false;
         } else {
-            isThatAllBool = true;
+            finished = true;
         }
-        return isThatAllBool;
+        return finished;
     }
 
+    /**
+     * Author: Henry
+     * Returns remaining money to user after use in order of highest
+     * denomination
+     *
+     * @param moneyIn The remaining user balance
+     */
     public void returnMoney(double moneyIn) {
-        int a;
+        int amountReturned; //amount of coin returned to user
         System.out.println("Returning your change: $" + df.format(moneyIn));
         for (int count = 0; count < 5; count++) {
-            a = 0;
+            amountReturned = 0;
+
+            //run when coin is in machine and its value is less than the user's balance
             while (changeInfo[count].getCoinValue() <= moneyIn && changeInfo[count].getChange() > 0) {
+
+                //subtract returned coin value from user's balance, remove one coin from machine storage, and add one to returned amount
                 moneyIn -= changeInfo[count].getCoinValue();
                 changeInfo[count].remove(1);
-                a++;
+                amountReturned++;
             }
-            if (a > 1) {
-                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + "s back");
-            } else if (a == 1) {
-                System.out.println("You get " + a + " " + changeInfo[count].getCoinDescription() + " back");
+
+            //print coin return statements if at least one coin is returned
+            if (amountReturned > 1) {
+                System.out.println("You get " + amountReturned + " " + changeInfo[count].getCoinDescription() + "s back");
+            } else if (amountReturned == 1) {
+                System.out.println("You get " + amountReturned + " " + changeInfo[count].getCoinDescription() + " back");
             }
         }
 
-        if (moneyIn > 0.5) {
+        //print statement if all available coins in machine do not return enough money
+        if (moneyIn > 0.5) {    //set to 0.5 due to error with Java not returned nickels (asked Mr. RD about it)
             System.out.println("Sorry, the machine is out of coins. Ayyy lmao");
         }
 
