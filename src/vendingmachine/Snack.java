@@ -17,9 +17,9 @@ public class Snack {
     private int qty;    //amount of snack in machine
     private double realPrice;   //cost of actual snack production
     private int snacksSold; //number of snacks sold in machine
-    
+
     //create snack object constructor
-    public Snack(String newName, String newSnackDescription,double newPrice, int startQty, double newRealPrice) {
+    public Snack(String newName, String newSnackDescription, double newPrice, int startQty, double newRealPrice) {
         name = newName;
         snackDescription = newSnackDescription;
         price = newPrice;
@@ -38,83 +38,67 @@ public class Snack {
     }
 
     /**
-     * @return the name
+     * Checks to see if user has enough money to buy the snack
+     * 
+     * @param snack The desired snack of user  
+     * @param money Current user balance in machine
+     * @return whether or not the user has enough money to buy the snack
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return the price
-     */
-    public Double getPrice() {
-        return price;
-    }
-
-    /**
-     * @param price the price to set
-     */
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    /**
-     * @return the qty
-     */
-    public int getQty() {
-        return qty;
-    }
-    /**
-     * @return the realPrice
-     */
-    public Double getRealPrice() {
-        return realPrice;
-    }
-    /**
-     * @param realPrice the realPrice to set
-     */
-    public void setRealPrice(double realPrice){
-        this.realPrice = realPrice;
-    }
-    /**
-     * @return the snacksSold
-     */
-    public int getSnacksSold() {
-        return snacksSold;
-    }
-    /**
-     * @param snacksSold the snacksSold to set
-     */
-    public void increaseSnacksSold(){
-        this.snacksSold ++;
-    }
-    /**
-     * @param qty the qty to set
-     */
-    public void setQty(int qty) {
-        this.qty = qty;
-    }  
-    
-    public boolean snackPurchased(Snack name, double money){
-        if (name.price <= money){
-            name.qty --;
-            System.out.println("Enjoy your " + name.name + "!");
+    public boolean snackPurchased(Snack snack, double money) {
+        if (snack.price <= money) {
+            snack.qty--;
+            System.out.println("Enjoy your " + snack.name + "!");
             return true;
-        }else {
+        } else {
             System.out.println("Not enough dolla dolla bills y'all.");
             return false;
         }
     }
 
     /**
-     * @return the snackDescription
+     * @return the name of the snack
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @return the price of the snack
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * @return the qty of snack in vending machine
+     */
+    public int getQty() {
+        return qty;
+    }
+
+    /**
+     * @return the factory production price of the snack
+     */
+    public Double getRealPrice() {
+        return realPrice;
+    }
+
+    /**
+     * @return the total amount of snacks sold
+     */
+    public int getSnacksSold() {
+        return snacksSold;
+    }
+
+    /**
+     * Increase the snack sold amount of a snack by one
+     */
+    public void increaseSnacksSold() {
+        snacksSold++;
+    }
+
+    /**
+     * @return the name of the snack
      */
     public String getSnackDescription() {
         return snackDescription;

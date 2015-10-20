@@ -90,36 +90,36 @@ public class Display {
 
     /**
      * Asks user for amount of each coin and calculates money total
-     * 
+     *
      * @param moneyIn The current user's money in machine
      * @return The user's money in machine after coin insertion
      */
     public double promptInsert(double moneyIn) {
         System.out.println("Please input number of toonies");
-        int toonieAmount = kbScan.nextInt();            
+        int toonieAmount = kbScan.nextInt();
         System.out.println("Please input number of loonies");
-        int loonieAmount = kbScan.nextInt();                
+        int loonieAmount = kbScan.nextInt();
         System.out.println("Please input number of quarters");
-        int quarterAmount = kbScan.nextInt();               
+        int quarterAmount = kbScan.nextInt();
         System.out.println("Please input number of dimes");
-        int dimeAmount = kbScan.nextInt();      
+        int dimeAmount = kbScan.nextInt();
         System.out.println("Please input number of nickels");
         int nickelAmount = kbScan.nextInt();
-        
+
         //set amount of coins put in by user
-        changeInfo[0].setUserCoin(toonieAmount);  
+        changeInfo[0].setUserCoin(toonieAmount);
         changeInfo[1].setUserCoin(loonieAmount);
         changeInfo[2].setUserCoin(quarterAmount);
         changeInfo[3].setUserCoin(dimeAmount);
         changeInfo[4].setUserCoin(nickelAmount);
-        
+
         //add the coins given by the user to the machine
-        changeInfo[0].add(toonieAmount); 
+        changeInfo[0].add(toonieAmount);
         changeInfo[1].add(loonieAmount);
         changeInfo[2].add(quarterAmount);
         changeInfo[3].add(dimeAmount);
         changeInfo[4].add(nickelAmount);
-        
+
         //calculate the user's balance
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
@@ -130,35 +130,54 @@ public class Display {
         return moneyIn;
     }
 
-    public int promptSelection(Snack[] s) {
+    /**
+     * Asks user for desired snack, checks if snack is in stock, and displays
+     * snack information
+     *
+     * @param snack The snack array storing the available snack information
+     * @return the desired snack selection
+     */
+    public int promptSelection(Snack[] snack) {
 
-        char confirmation;
-        int snackNumber;
+        char confirmation;  //user decisions
+        int snackNumber;    //snack selection made by user
 
         do {
             do {
                 System.out.println("Please enter the number associated with the desired snack.");
                 snackNumber = kbScan.nextInt();
+
+                //exit loop for maintenance when instructed by user
                 if (snackNumber == 10) {
                     break;
-                } else if (s[snackNumber].getQty() == 0) {
+                    
+                //print error message when the snack runs out of stock
+                } else if (snack[snackNumber].getQty() == 0) {
                     System.out.println("Item not in stock. Please another snack.");
                 }
-            } while (s[snackNumber].getQty() == 0);
+            } while (snack[snackNumber].getQty() == 0);
+
+            //exit to maintenance menu when instructed by user
             if (snackNumber == 10) {
                 break;
             }
-            System.out.println("Do you want to see the snack information for " + s[snackNumber].getName() + "? (y/n)");
+
+            //print snack information if needed
+            System.out.println("Do you want to see the snack information for " + snack[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
             if (confirmation == 'y' || confirmation == 'Y') {
-                System.out.println(s[snackNumber].getSnackDescription());
+                System.out.println(snack[snackNumber].getSnackDescription());
             }
-            System.out.println("Do you want a " + s[snackNumber].getName() + "? (y/n)");
+            
+            System.out.println("Do you want a " + snack[snackNumber].getName() + "? (y/n)");
             confirmation = kbScan.next().charAt(0);
         } while (confirmation == 'n' || confirmation == 'N');
+        
+        //increase snack sold number by one for desired snack
         if (snackNumber != 10) {
-            s[snackNumber].increaseSnacksSold();
+            snack[snackNumber].increaseSnacksSold();
         }
+        
         return snackNumber;
     }
 

@@ -13,7 +13,7 @@ public class VendingMachine {
 
     private double moneyIn; //amount of money input by user
     private Snack[] snackInfo = new Snack[10];  //array for snack objects
-    Display disp = new Display();   //display of vending machine (pretty much LED LIGHTS AND PLEXIGLASS)
+    Display disp = new Display();   //display of vending machine
 
     /**
      * Calls method in display to load assets such as snacks and coins into vending machine
@@ -52,10 +52,13 @@ public class VendingMachine {
         moneyIn = disp.promptInsert(moneyIn);
     }
 
+    /**
+     * Calls display method to receive snack selection and either buy snack or open maintenance menu
+     */
     public void getSelection() {
         int snackSelection = disp.promptSelection(snackInfo);
         if (snackSelection != 10) {
-            boolean enoughMoney = snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn);
+            boolean enoughMoney = snackInfo[snackSelection].snackPurchased(snackInfo[snackSelection], moneyIn); //
             if (enoughMoney == true) {
                 moneyIn -= snackInfo[snackSelection].getPrice();
             }
@@ -76,11 +79,10 @@ public class VendingMachine {
             do {
                 vm.displaySnacks(); //show user all snacks available for purchase
                 vm.insertMoney();   //prompt user to insert money 
-                vm.getSelection();
+                vm.getSelection();  //get user snack selection
             } while (vm.isThatAll() == false);
             vm.returnMoney();
         } while (1 > 0);
-        // I changed the maintenance calling so it will only be called if 10 if given when selecting a snack - Adam
     }
 
     /**
