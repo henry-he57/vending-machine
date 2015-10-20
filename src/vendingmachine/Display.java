@@ -92,7 +92,7 @@ public class Display {
      * Asks user for amount of each coin and calculates money total
      * 
      * @param moneyIn The current user's money in machine
-     * @return 
+     * @return The user's money in machine after coin insertion
      */
     public double promptInsert(double moneyIn) {
         System.out.println("Please input number of toonies");
@@ -120,10 +120,11 @@ public class Display {
         changeInfo[3].add(dimeAmount);
         changeInfo[4].add(nickelAmount);
         
-        
+        //calculate the user's balance
         for (int count = 0; count < 5; count++) {
             moneyIn += changeInfo[count].add(changeInfo[count]);
         }
+
         moneyIn = Math.round(moneyIn * 100d) / 100d;
         System.out.println("Your balance is: $" + df.format(moneyIn));
         return moneyIn;

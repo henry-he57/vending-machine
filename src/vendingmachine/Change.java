@@ -41,16 +41,16 @@ public class Change {
     public void add(int qty) {
         change += qty;
     }
-    
-    /*
+
+    /**
+     * Calculates total value of user inserted change for one coin
      * 
-     * @param c
-     * @return 
+     * @param change The coin object to calculate balance for
+     * @return The total value of the specific coin object inserted by user           
      */
-    public double add(Change c) {
+    public double add(Change change) {
         double changeValue = 0;
-        changeValue += c.coinValue * c.userChange;
-        
+        changeValue += change.coinValue * change.userChange;
         return changeValue;
     }
 

@@ -45,7 +45,6 @@ public class VendingMachine {
         }
     }
 
-    
     /**
      * Calls display method to ask user for money insertion
      */
